@@ -16,7 +16,8 @@ public class LargestPrimeFactor {
 		{
 			primecheck=true;
 			//where we check if not a prime number
-			int res = (int) Math.sqrt(255);
+			// use square root to reduce number of iteration
+			int res = (int) Math.sqrt(16);
 			for (int k = 2; k <=Math.sqrt(i); k++)
 			{
 				if (i % k == 0)
