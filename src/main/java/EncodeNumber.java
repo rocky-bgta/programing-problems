@@ -8,8 +8,9 @@ public class EncodeNumber {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		encodeNumber(24);
-		encodeNumber(6936);
 		encodeNumber(1200);
+		encodeNumber(24);
+		encodeNumber(6936);
 		encodeNumber(-18);
 		encodeNumber(2);
 		encodeNumber(6);
@@ -30,14 +31,17 @@ public class EncodeNumber {
 			for(int k=2; k<loop; k++)
 			{
 				//prime number
+				//check k is prime number or not
 				if(n==1)
 					break;
-				for(int i=2; i<=k/i; i++)
+				for(int i=2; i<=Math.sqrt(k); i++)
 				{
 					if(k%i==0)
 						isPrime=false;
-					else 
-						isPrime=true;
+					else {
+						isPrime = true;
+						break;
+					}
 					
 				}
 				if(isPrime)
