@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-class Result {
+class PairCountResult {
 
     /*
      * Complete the 'sockMerchant' function below.
@@ -61,7 +61,7 @@ public class PairCount {
             ar.add(arItem);
         }
 
-        int result = Result.sockMerchant(7, ar);
+        int result = PairCountResult.sockMerchant(7, ar);
 
 //        bufferedWriter.write(String.valueOf(result));
 //        bufferedWriter.newLine();
