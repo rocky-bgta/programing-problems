@@ -23,6 +23,8 @@ class MakeAnagramResult {
      *  2. STRING b
      */
 
+
+
     public static int makeAnagram(String a, String b) {
         Map<Character, Integer> map = new HashMap<>();
         int count = 0;
@@ -64,8 +66,10 @@ public class MakeAnagramSolution {
 
         String b = "dceff";
 
-        int res = MakeAnagramResult.makeAnagram(a, b);
+        //int res = MakeAnagramResult.makeAnagram(a, b);
 
+        int nums[] = {2,7,11,15};
+        int target = 9;
 
     }
 }
