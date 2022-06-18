@@ -4,6 +4,11 @@ public class Palindrome_Number_9 {
 
 
     public static void main(String[] args) {
+        Integer result, inputNumber;
+        inputNumber =  new Integer(125);
+        result = inputNumber%10;
+        System.out.println(result);
+
         isPalindrome(121);
     }
 

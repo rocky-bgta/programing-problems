@@ -20,9 +20,9 @@ public class RemoveAllAdjacentDuplicate {
             }
         }
 
-        String resutl = new String(stack, 0,i);
+        String result = new String(stack, 0,i);
 
-        System.out.printf("result "+ resutl);
+        System.out.printf("result "+ result);
 
     }
 }
