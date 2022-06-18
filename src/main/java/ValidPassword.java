@@ -1,7 +1,9 @@
+import java.text.DecimalFormat;
+
 public class ValidPassword {
 
     public static void main(String[] args) {
-      boolean result =  isValidPassword(new String("Pass#1%!"));
+      boolean result =  isValidPassword(new String("Passjjuyt#1!!!!!!!%!"));
         System.out.println(result);
     }
 
@@ -45,9 +47,11 @@ public class ValidPassword {
          */
 
 
-        double percentage = (double) ((double)specialChars / (double) password.length())*20;
+        double percentage = ((double)specialChars / (double) password.length());
+        DecimalFormat df = new DecimalFormat("#.#");
+        percentage = Double.parseDouble(df.format(percentage));
 
-        if(percentage < 0.2){
+        if(percentage > 0.2){
             result =  false;
         }
 
