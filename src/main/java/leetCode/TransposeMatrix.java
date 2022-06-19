@@ -8,9 +8,9 @@ public class TransposeMatrix {
 
         int[][] new_matrix = new int[columns][rows];
 
-        for(int i=0; i<rows; i++){
-            for(int j=0; j<columns; j++){
-                new_matrix[j][i] = A[i][j];
+        for(int row=0; row<rows; row++){
+            for(int col=0; col<columns; col++){
+                new_matrix[col][row] = A[row][col];
             }
         }
         return new_matrix;
