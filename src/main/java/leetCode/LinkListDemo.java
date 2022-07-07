@@ -21,6 +21,17 @@ public class LinkListDemo {
     }
 
 
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        while (head!=null){
+            ListNode next_node = head.next;
+            head.next = prev;
+            prev = head;
+            head = next_node;
+        }
+        return prev;
+    }
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null)
             return null;
@@ -164,8 +175,17 @@ public class LinkListDemo {
 //        list3.insertLast(3);
 //        list3.insertLast(4);
 //        list3.insertLast(5);
-        list3.removeNthFromEnd(list3.head,1);
-        list3.display();
+        //list3.removeNthFromEnd(list3.head,1);
+        //list3.display();
+
+
+        LinkListDemo list4 = new LinkListDemo();
+        list4.insertLast(1);
+        list4.insertLast(2);
+        list4.insertLast(3);
+
+        list4.display();
+        list4.reverseList(list4.head);
 
 
 //        LinkListDemo result = new LinkListDemo();
