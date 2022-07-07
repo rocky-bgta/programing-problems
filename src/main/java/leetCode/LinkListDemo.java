@@ -2,27 +2,58 @@ package leetCode;
 
 public class LinkListDemo {
 
-    private LinkNode head;
+    private ListNode head;
 
-    private static class LinkNode{
+    private static class ListNode{
         private int data;
-        private LinkNode next;
+        private ListNode next;
 
-        public LinkNode(int data){
+        public ListNode(int data){
             this.data = data;
             this.next = null;
         }
     }
 
     public void insertFirst (int value){
-        LinkNode linkNode = new LinkNode(value);
-        linkNode.next = head;
-        head = linkNode;
+        ListNode ListNode = new ListNode(value);
+        ListNode.next = head;
+        head = ListNode;
     }
 
-    public static LinkNode marge(LinkNode list1, LinkNode list2){
-        LinkNode dummy = new LinkNode(0);
-        LinkNode tail = dummy;
+
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if(head == null)
+            return null;
+
+        //get length of list
+        ListNode p = head;
+        int len = 0;
+        while(p != null){
+            len++;
+            p = p.next;
+        }
+
+        //if remove first node
+        int fromStart = len-n+1;
+        if(fromStart==1)
+            return head.next;
+
+        //remove non-first node
+        p = head;
+        int i=0;
+        while(p!=null){
+            i++;
+            if(i==fromStart-1){
+                p.next = p.next.next;
+            }
+            p=p.next;
+        }
+        return head;
+    }
+
+    public static ListNode marge(ListNode list1, ListNode list2){
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
 
         while(list1 !=null  && list2 !=null){
             if(list1.data<list2.data){
@@ -45,20 +76,35 @@ public class LinkListDemo {
     }
 
     public void insertLast(int value){
-        LinkNode linkNode = new LinkNode(value);
+        ListNode ListNode = new ListNode(value);
         if(head==null){
-            head = linkNode;
+            head = ListNode;
             return;
         }
-        LinkNode current = head;
+        ListNode current = head;
         while (null != current.next){
             current = current.next;
         }
-        current.next = linkNode;
+        current.next = ListNode;
+    }
+
+    public void delete(int position){
+        if(position==1){
+            head = head.next;
+        }else {
+            ListNode previous = head;
+            int count = 1;
+            while (count < position -1){
+                previous = previous.next;
+                count++;
+            }
+            ListNode current = previous.next;
+            previous.next = current.next;
+        }
     }
 
     public void display(){
-        LinkNode current = head;
+        ListNode current = head;
         while (current != null){
             System.out.print(current.data + "--->");
             current = current.next;
@@ -71,7 +117,7 @@ public class LinkListDemo {
             return 0;
         }
         int count = 0;
-        LinkNode current = head;
+        ListNode current = head;
         while (current != null){
             count++;
             current = current.next;
@@ -82,10 +128,10 @@ public class LinkListDemo {
     public static void main(String[] args) {
         LinkListDemo list1 = new LinkListDemo();
 
-        //linkListDemo.head = new LinkNode(10);
-//        LinkNode second = new LinkNode(1);
-//        LinkNode third = new LinkNode(8);
-//        LinkNode fourth = new LinkNode(11);
+        //linkListDemo.head = new ListNode(10);
+//        ListNode second = new ListNode(1);
+//        ListNode third = new ListNode(8);
+//        ListNode fourth = new ListNode(11);
 //
 //        linkListDemo.head.next = second;
 //        second.next = third;
@@ -95,23 +141,37 @@ public class LinkListDemo {
 //        linkListDemo.insertLast(8);
 //        linkListDemo.insertLast(1);
 
-        list1.insertLast(1);
-        list1.insertLast(4);
-        list1.insertLast(8);
+//        list1.insertLast(1);
+//        list1.insertLast(4);
+//        list1.insertLast(8);
 
         LinkListDemo list2 = new LinkListDemo();
 
-        list2.insertLast(3);
-        list2.insertLast(5);
-        list2.insertLast(8);
-        list2.insertLast(9);
-        list2.insertLast(14);
-        list2.insertLast(18);
 
-        LinkListDemo result = new LinkListDemo();
-        result.head = marge(list1.head,list2.head) ;
+//        list2.insertLast(3);
+//        list2.insertLast(5);
+//        list2.insertLast(8);
+//        list2.insertLast(9);
+//        list2.insertLast(14);
+//        list2.insertLast(18);
+//        list2.display();
+//        list2.delete(4);
+//        list2.display();
 
-        result.display();
+        LinkListDemo list3 = new LinkListDemo();
+        list3.insertLast(1);
+        //list3.insertLast(2);
+//        list3.insertLast(3);
+//        list3.insertLast(4);
+//        list3.insertLast(5);
+        list3.removeNthFromEnd(list3.head,1);
+        list3.display();
+
+
+//        LinkListDemo result = new LinkListDemo();
+//        result.head = marge(list1.head,list2.head) ;
+//
+//        result.display();
 
 
         //linkListDemo.display();
