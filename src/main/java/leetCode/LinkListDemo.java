@@ -21,6 +21,29 @@ public class LinkListDemo {
     }
 
 
+    public boolean isPalindrome(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        slow = reverseList(slow);
+        fast = head;
+
+        while (slow != null){
+            if(slow.data != fast.data){
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return true;
+    }
+
+
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         while (head!=null){
@@ -30,6 +53,22 @@ public class LinkListDemo {
             head = next_node;
         }
         return prev;
+    }
+
+    public boolean containsLoop(){
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+
+        while (fastPtr != null && fastPtr.next != null){
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+
+            if(slowPtr == fastPtr){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -178,14 +217,19 @@ public class LinkListDemo {
         //list3.removeNthFromEnd(list3.head,1);
         //list3.display();
 
-
-        LinkListDemo list4 = new LinkListDemo();
-        list4.insertLast(1);
-        list4.insertLast(2);
-        list4.insertLast(3);
-
-        list4.display();
-        list4.reverseList(list4.head);
+//
+//        LinkListDemo list4 = new LinkListDemo();
+//        list4.insertLast(1);
+//        list4.insertLast(2);
+//        list4.insertLast(3);
+//
+//        list4.display();
+//        list4.reverseList(list4.head);
+//[3,2,0,-4]
+        LinkListDemo list5 = new LinkListDemo();
+        list5.insertLast(1);
+        list5.insertLast(2);
+        list5.insertLast(3);
 
 
 //        LinkListDemo result = new LinkListDemo();
