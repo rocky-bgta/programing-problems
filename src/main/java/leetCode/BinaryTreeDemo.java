@@ -23,35 +23,33 @@ public class BinaryTreeDemo {
     }
 
     public void createBinaryTree(){
-//        TreeNode first = new TreeNode(9);
-//        TreeNode second = new TreeNode(2);
-//        TreeNode third = new TreeNode(3);
-//        TreeNode fourth = new TreeNode(4);
-//
-//        root = first;
-//        first.left =second;
-//        first.right = third;
-//
-//        second.left = fourth;
-
-
-        TreeNode first = new TreeNode(3);
-        TreeNode second = new TreeNode(9);
-        TreeNode third = new TreeNode(20);
-        TreeNode fourth = new TreeNode(15);
-        TreeNode fifth = new TreeNode(7);
+        TreeNode first = new TreeNode(9);
+        TreeNode second = new TreeNode(2);
+        TreeNode third = new TreeNode(3);
+        TreeNode fourth = new TreeNode(4);
 
         root = first;
-        first.left = second;
+        first.left =second;
         first.right = third;
-        third.left = fourth;
-        third.right = fifth;
+
+        second.left = fourth;
+
+
+//        TreeNode first = new TreeNode(3);
+//        TreeNode second = new TreeNode(9);
+//        TreeNode third = new TreeNode(20);
+//        TreeNode fourth = new TreeNode(15);
+//        TreeNode fifth = new TreeNode(7);
+//
+//        root = first;
+//        first.left = second;
+//        first.right = third;
+//        third.left = fourth;
+//        third.right = fifth;
 
 
     }
-
     public void preOrder(TreeNode root){
-        int count = 0;
         if(root == null){
             return;
         }
@@ -108,24 +106,48 @@ public class BinaryTreeDemo {
             }
         }
     }
+    
+    
+    public void postOrder(TreeNode root) {
+		if(root == null) {
+			return;
+		}
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.print(root.data + " ");
+	}
 
     public int maxDepth(TreeNode root) {
+    	if(root!=null)
+    		System.out.println("Node value : " + root.data);
+    	else
+    		System.out.println("Node value : "+ "Null");
+    	
+        int left=0,right=0;
         // Base Condition
         if(root == null)
             return 0;
         // Hypothesis
-        int left = maxDepth(root.left);
-        int right = maxDepth(root.right);
+        left = maxDepth(root.left);
+        right = maxDepth(root.right);
+        System.out.println("Left: "+ left + " ");
+        System.out.println("right: "+ right);
+        System.out.println("Processed data :"+ root.data);
         // Induction
-        return Math.max(left, right) + 1;
+        int result = Math.max(left, right) + 1;
+        System.out.println("Result: "+result);
+        return result;
     }
 
     public static void main(String[] args) {
         BinaryTreeDemo bt = new BinaryTreeDemo();
         bt.createBinaryTree();
+        // bt.preOrder(bt.root);
         //bt.preOrderWithIterative();
         //bt.inOrder(bt.root);
-        bt.maxDepth(bt.root);
+       // int result = bt.maxDepth(bt.root);
+       // System.out.println(result);
+        bt.postOrder(bt.root);
     }
 
 }
