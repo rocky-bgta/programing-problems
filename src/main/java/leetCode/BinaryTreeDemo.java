@@ -1,9 +1,7 @@
 package leetCode;
 
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTreeDemo {
 
@@ -116,7 +114,6 @@ public class BinaryTreeDemo {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-
         while(!queue.isEmpty()){
             TreeNode temp = queue.poll();
             System.out.print(temp.data + " ");
@@ -129,6 +126,41 @@ public class BinaryTreeDemo {
                 queue.offer(temp.right);
             }
         }
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<Integer> parent = new ArrayList<>();
+        List<Integer> left = new ArrayList<>();
+        List<Integer> right= new ArrayList<>();
+
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        parent.add(root.data);
+        while(!queue.isEmpty()){
+            TreeNode temp = queue.poll();
+            if(temp.left != null){
+                queue.offer(temp.left);
+            }
+
+            if(temp.right != null){
+                queue.offer(temp.right);
+            }
+
+            if(temp.left!=null){
+                left.add(temp.left.data);
+            }
+            if(temp.right!=null){
+                right.add(temp.right.data);
+            }
+        }
+        result.add(parent);
+        if(left!=null)
+            result.add(left);
+        if(right!=null)
+            result.add(right);
+        return result;
     }
     
     
