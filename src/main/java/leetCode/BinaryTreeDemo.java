@@ -47,20 +47,38 @@ public class BinaryTreeDemo {
 //        third.left = fourth;
 //        third.right = fifth;
 
-        TreeNode first = new TreeNode(3);
-        TreeNode second = new TreeNode(9);
-        TreeNode third = new TreeNode(20);
-        TreeNode fourth = null;
-        TreeNode fifth = null;
-        TreeNode six = new TreeNode(15);
-        TreeNode seven = new TreeNode(7);
+//        TreeNode first = new TreeNode(3);
+//        TreeNode second = new TreeNode(9);
+//        TreeNode third = new TreeNode(20);
+//        TreeNode fourth = null;
+//        TreeNode fifth = null;
+//        TreeNode six = new TreeNode(15);
+//        TreeNode seven = new TreeNode(7);
+//
+//        root = first;
+//        first.left = second;
+//        first.right = third;
+//        second.left = null;
+//        second.right = null;
+//        third.left = six;
+//        third.right = seven;
+
+        TreeNode first = new TreeNode(1);
+        TreeNode second = new TreeNode(2);
+        TreeNode third = new TreeNode(3);
+        TreeNode fourth = new TreeNode(4);
+
+        TreeNode seven = new TreeNode(5);
+
 
         root = first;
         first.left = second;
         first.right = third;
-        second.left = null;
-        second.right = null;
-        third.left = six;
+        second.left = fourth;
+        //second.right = null;
+        //fourth.left=null;
+        //fourth.right=null;
+       // third.left = null;
         third.right = seven;
 
 
@@ -146,34 +164,29 @@ public class BinaryTreeDemo {
     }
 
     public List<List<Integer>> levelOrderLeetCodeVersion(TreeNode root) {
-        List<Integer> parent = new ArrayList<>();
-        List<Integer> nodeLevel;
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> levelOrder = new ArrayList<>();
+        if(root ==null) return levelOrder;
 
         Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        if(root!=null)
-            parent.add(root.data);
-        else
-            return result;
-        result.add(parent);
-        while(!queue.isEmpty()){
-            TreeNode temp = queue.poll();
-            nodeLevel = new ArrayList<>();
-            if(temp.left != null){
-                queue.offer(temp.left);
-                nodeLevel.add(temp.left.data);
-            }
+        queue.add(root);
 
-            if(temp.right != null){
-                queue.offer(temp.right);
-                nodeLevel.add(temp.right.data);
+        while(!queue.isEmpty()){
+            List<Integer> children = new ArrayList<>();
+            int size = queue.size();
+
+            //Pushing children in the queue
+            for(int i=0; i<size; i++){
+                TreeNode node = queue.poll();
+                children.add(node.data);
+
+                if(node.left!=null)
+                    queue.add(node.left);
+                if(node.right!=null)
+                    queue.add(node.right);
             }
-            if(nodeLevel.size()>0) {
-                result.add(nodeLevel);
-            }
+            levelOrder.add(children);
         }
-        return result;
+        return levelOrder;
     }
     
     
