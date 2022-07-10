@@ -147,36 +147,32 @@ public class BinaryTreeDemo {
 
     public List<List<Integer>> levelOrderLeetCodeVersion(TreeNode root) {
         List<Integer> parent = new ArrayList<>();
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right= new ArrayList<>();
-
+        List<Integer> nodeLevel;
         List<List<Integer>> result = new ArrayList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        parent.add(root.data);
+        if(root!=null)
+            parent.add(root.data);
+        else
+            return result;
+        result.add(parent);
         while(!queue.isEmpty()){
             TreeNode temp = queue.poll();
+            nodeLevel = new ArrayList<>();
             if(temp.left != null){
                 queue.offer(temp.left);
+                nodeLevel.add(temp.left.data);
             }
 
             if(temp.right != null){
                 queue.offer(temp.right);
+                nodeLevel.add(temp.right.data);
             }
-
-            if(temp.left!=null){
-                left.add(temp.left.data);
-            }
-            if(temp.right!=null){
-                right.add(temp.right.data);
+            if(nodeLevel.size()>0) {
+                result.add(nodeLevel);
             }
         }
-        result.add(parent);
-        if(left!=null)
-            result.add(left);
-        if(right!=null)
-            result.add(right);
         return result;
     }
     
@@ -221,7 +217,7 @@ public class BinaryTreeDemo {
         // int result = bt.maxDepth(bt.root);
         // System.out.println(result);
        // bt.postOrder(bt.root);
-        bt.l
+        bt.levelOrderLeetCodeVersion(bt.root);
     }
 
 }
