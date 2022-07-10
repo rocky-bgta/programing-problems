@@ -23,16 +23,16 @@ public class BinaryTreeDemo {
     }
 
     public void createBinaryTree(){
-        TreeNode first = new TreeNode(9);
-        TreeNode second = new TreeNode(2);
-        TreeNode third = new TreeNode(3);
-        TreeNode fourth = new TreeNode(4);
-
-        root = first;
-        first.left =second;
-        first.right = third;
-
-        second.left = fourth;
+//        TreeNode first = new TreeNode(9);
+//        TreeNode second = new TreeNode(2);
+//        TreeNode third = new TreeNode(3);
+//        TreeNode fourth = new TreeNode(4);
+//
+//        root = first;
+//        first.left =second;
+//        first.right = third;
+//
+//        second.left = fourth;
 
 
 //        TreeNode first = new TreeNode(3);
@@ -46,6 +46,23 @@ public class BinaryTreeDemo {
 //        first.right = third;
 //        third.left = fourth;
 //        third.right = fifth;
+
+        TreeNode first = new TreeNode(3);
+        TreeNode second = new TreeNode(9);
+        TreeNode third = new TreeNode(20);
+        TreeNode fourth = null;
+        TreeNode fifth = null;
+        TreeNode six = new TreeNode(15);
+        TreeNode seven = new TreeNode(7);
+
+        root = first;
+        first.left = second;
+        first.right = third;
+        second.left = null;
+        second.right = null;
+        third.left = six;
+        third.right = seven;
+
 
 
     }
@@ -128,7 +145,7 @@ public class BinaryTreeDemo {
         }
     }
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrderLeetCodeVersion(TreeNode root) {
         List<Integer> parent = new ArrayList<>();
         List<Integer> left = new ArrayList<>();
         List<Integer> right= new ArrayList<>();
@@ -203,7 +220,8 @@ public class BinaryTreeDemo {
         //bt.inOrder(bt.root);
         // int result = bt.maxDepth(bt.root);
         // System.out.println(result);
-        bt.postOrder(bt.root);
+       // bt.postOrder(bt.root);
+        bt.l
     }
 
 }
