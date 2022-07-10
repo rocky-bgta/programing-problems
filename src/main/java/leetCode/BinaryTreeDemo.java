@@ -1,6 +1,8 @@
 package leetCode;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTreeDemo {
@@ -106,6 +108,28 @@ public class BinaryTreeDemo {
             }
         }
     }
+
+    public void levelOrder(){
+        if(root == null){
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            TreeNode temp = queue.poll();
+            System.out.print(temp.data + " ");
+
+            if(temp.left != null){
+                queue.offer(temp.left);
+            }
+
+            if(temp.right != null){
+                queue.offer(temp.right);
+            }
+        }
+    }
     
     
     public void postOrder(TreeNode root) {
@@ -145,8 +169,8 @@ public class BinaryTreeDemo {
         // bt.preOrder(bt.root);
         //bt.preOrderWithIterative();
         //bt.inOrder(bt.root);
-       // int result = bt.maxDepth(bt.root);
-       // System.out.println(result);
+        // int result = bt.maxDepth(bt.root);
+        // System.out.println(result);
         bt.postOrder(bt.root);
     }
 
