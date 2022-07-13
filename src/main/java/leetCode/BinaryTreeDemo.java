@@ -63,24 +63,34 @@ public class BinaryTreeDemo {
 //        third.left = six;
 //        third.right = seven;
 
-        TreeNode first = new TreeNode(1);
-        TreeNode second = new TreeNode(2);
-        TreeNode third = new TreeNode(3);
-        TreeNode fourth = new TreeNode(4);
+//        TreeNode first = new TreeNode(1);
+//        TreeNode second = new TreeNode(2);
+//        TreeNode third = new TreeNode(3);
+//        TreeNode fourth = new TreeNode(4);
+//
+//        TreeNode seven = new TreeNode(5);
+//
+//
+//        root = first;
+//        first.left = second;
+//        first.right = third;
+//        second.left = fourth;
+//        third.right = seven;
 
-        TreeNode seven = new TreeNode(5);
 
+        TreeNode two = new TreeNode(2);
+        TreeNode one = new TreeNode(1);
+        TreeNode three = new TreeNode(3);
+        TreeNode five = new TreeNode(5);
+        TreeNode four = new TreeNode(4);
+        TreeNode six = new TreeNode(6);
+        TreeNode seven = new TreeNode(7);
 
-        root = first;
-        first.left = second;
-        first.right = third;
-        second.left = fourth;
-        //second.right = null;
-        //fourth.left=null;
-        //fourth.right=null;
-       // third.left = null;
-        third.right = seven;
-
+        root = five;
+        five.left = two;
+        five.right = six;
+        two.left = one;
+        two.right = three;
 
 
     }
@@ -165,7 +175,8 @@ public class BinaryTreeDemo {
 
     public List<List<Integer>> levelOrderLeetCodeVersion(TreeNode root) {
         List<List<Integer>> levelOrder = new ArrayList<>();
-        if(root ==null) return levelOrder;
+        if(root == null)
+            return levelOrder;
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
@@ -188,7 +199,49 @@ public class BinaryTreeDemo {
         }
         return levelOrder;
     }
-    
+
+    public boolean isValid(TreeNode root, long min, long max){
+        if(root == null){
+            return true;
+        }
+
+        if(root.data >= max || root.data <= min ){
+            return false;
+        }
+
+        boolean left = isValid(root.left, min, root.data);
+        if(left){
+            boolean right = isValid(root.right, root.data,max);
+            return right;
+        }
+        return false;
+    }
+
+
+    boolean isSymmetric(TreeNode root){
+        if(root == null){
+            return true;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root.right);
+        stack.push(root.left);
+
+        while (!stack.isEmpty()){
+            TreeNode n1 = stack.pop();
+            TreeNode n2 = stack.pop();
+
+            if(n1==null && n2 == null) continue;
+            if(n1==null || n2 == null
+                        || n1.data!= n2.data) return false;
+
+            stack.push(n1.left);
+            stack.push(n2.right);
+            stack.push(n1.right);
+            stack.push(n2.left);
+        }
+        return true;
+    }
     
     public void postOrder(TreeNode root) {
 		if(root == null) {
@@ -230,7 +283,9 @@ public class BinaryTreeDemo {
         // int result = bt.maxDepth(bt.root);
         // System.out.println(result);
        // bt.postOrder(bt.root);
-        bt.levelOrderLeetCodeVersion(bt.root);
+        //bt.levelOrderLeetCodeVersion(bt.root);
+        boolean result = bt.isValid(bt.root, Long.MIN_VALUE, Long.MAX_VALUE);
+        System.out.println("Result: "+ result);
     }
 
 }
