@@ -1,5 +1,8 @@
 public class MergeSortedArrays {
 
+
+//    int[] arr1 = {0, 1, 8, 10};
+//    int[] arr2 = {2, 4, 11, 15, 20};
     public int[] merge(int[] arr1, int[] arr2, int n, int m){
         int[] result = new int[n + m];
         int i = 0; // traverse arr1
