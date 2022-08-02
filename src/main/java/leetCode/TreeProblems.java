@@ -3,7 +3,7 @@ package leetCode;
 
 import java.util.*;
 
-public class BinaryTreeDemo {
+public class TreeProblems {
 
     private TreeNode root;
 
@@ -289,7 +289,7 @@ public class BinaryTreeDemo {
     }
 
     public static void main(String[] args) {
-        BinaryTreeDemo bt = new BinaryTreeDemo();
+        TreeProblems bt = new TreeProblems();
         bt.createBinaryTree();
         // bt.preOrder(bt.root);
         //bt.preOrderWithIterative();

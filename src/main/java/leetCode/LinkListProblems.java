@@ -1,6 +1,6 @@
 package leetCode;
 
-public class LinkListDemo {
+public class LinkListProblems {
 
     private ListNode head;
 
@@ -176,7 +176,7 @@ public class LinkListDemo {
     }
 
     public static void main(String[] args) {
-        LinkListDemo list1 = new LinkListDemo();
+        LinkListProblems list1 = new LinkListProblems();
 
         //linkListDemo.head = new ListNode(10);
 //        ListNode second = new ListNode(1);
@@ -195,7 +195,7 @@ public class LinkListDemo {
 //        list1.insertLast(4);
 //        list1.insertLast(8);
 
-        LinkListDemo list2 = new LinkListDemo();
+        LinkListProblems list2 = new LinkListProblems();
 
 
 //        list2.insertLast(3);
@@ -208,7 +208,7 @@ public class LinkListDemo {
 //        list2.delete(4);
 //        list2.display();
 
-        LinkListDemo list3 = new LinkListDemo();
+        LinkListProblems list3 = new LinkListProblems();
         list3.insertLast(1);
         //list3.insertLast(2);
 //        list3.insertLast(3);
@@ -226,7 +226,7 @@ public class LinkListDemo {
 //        list4.display();
 //        list4.reverseList(list4.head);
 //[3,2,0,-4]
-        LinkListDemo list5 = new LinkListDemo();
+        LinkListProblems list5 = new LinkListProblems();
         list5.insertLast(1);
         list5.insertLast(2);
         list5.insertLast(3);
