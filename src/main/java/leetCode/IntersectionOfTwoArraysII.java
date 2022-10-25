@@ -8,8 +8,8 @@ import java.util.Map;
 public class IntersectionOfTwoArraysII {
 
     public static void main(String[] args) {
-        int[] nums1 = {4,9,5};
-        int[] nums2 = {9,4,9,8,4};
+        int[] nums1 = {4,9,5,9};
+        int[] nums2 = {9,4,9,8,4,9};
 
 
 //        int[] nums1 = {4,9,5};
