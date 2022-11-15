@@ -3,17 +3,14 @@ package leetCode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Remove_Duplicates {
-
+public class RemoveDuplicates_26 {
+    //https://leetcode.com/problems/remove-duplicates-from-sorted-array/
     public static void main(String[] args) {
         int nums[] = {1,1,2};
         removeDuplicates(nums);
 
-        Map<Integer,Integer> holder = new HashMap<>();
-        char[] s;
-
-        int maxValue = (int) Math.pow(2, 31) - 1;
-        System.out.println("Max value: "+ maxValue);
+        //int maxValue = (int) Math.pow(2, 31) - 1;
+        //System.out.println("Max value: "+ maxValue);
     }
 
 

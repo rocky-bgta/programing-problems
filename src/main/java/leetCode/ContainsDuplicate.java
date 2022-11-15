@@ -3,7 +3,7 @@ package leetCode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ContainsDuplicate {
+public class   ContainsDuplicate {
 
     /*
     Here trick is we put array value for both key and value of HashMap

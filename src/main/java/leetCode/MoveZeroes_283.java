@@ -8,7 +8,7 @@ Input: nums = [0]
 Output: [0]"
  */
 
-public class MoveZeroes {
+public class MoveZeroes_283 {
 
 
     public static void main(String[] args) {
@@ -23,9 +23,9 @@ public class MoveZeroes {
         int temp;
 
         while (right<nums.length){
-            if(nums[right]==0)
+            if(nums[right]==0) {
                 ++right;
-            else {
+            }else {
                 temp = nums[left];
                 nums[left] = nums[right];
                 nums[right]= temp;
