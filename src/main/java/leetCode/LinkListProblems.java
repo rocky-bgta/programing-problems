@@ -100,7 +100,7 @@ public class LinkListProblems {
         }
         return head;
     }
-
+   // https://www.youtube.com/watch?v=IMWiPqoneT4&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=48
     public static ListNode marge(ListNode list1, ListNode list2){
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;

@@ -9,10 +9,10 @@ public class Valid_Parentheses_20 {
         isValid(s);
     }
 
-
+    //https://www.youtube.com/watch?v=9kmUaXrjizQ
     public static boolean isValid(String s) {
 
-
+        // must be even number of char that is at least 2 char
         if(s.length()%2 != 0)
             return false;
 

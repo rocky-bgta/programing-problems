@@ -1,6 +1,7 @@
 package leetCode;
 
-public class Rotate_Image {
+//https://leetcode.com/problems/rotate-image/
+public class Rotate_Image_48 {
 
     public static void main(String[] args) {
        int matrix[][] = {
@@ -10,12 +11,13 @@ public class Rotate_Image {
                             {15,14,12,16}
                         };
 
-       Rotate_Image.rotate(matrix);
+       Rotate_Image_48.rotate(matrix);
     }
 
+    //https://www.youtube.com/watch?v=SA867FvqHrM
     public static void rotate(int[][] matrix){
         int length = matrix.length;
-
+        // first turn all row  to column
         for(int row=0; row<length; row++){
             for(int col=row; col<length; col++){
                 int temp = matrix[row][col];

@@ -1,5 +1,5 @@
 
-public class LargestAdjacentSum {
+public class LargestAdjacentProduct {
 
 	/**
 	 * @param args
@@ -28,27 +28,25 @@ public class LargestAdjacentSum {
 	
 	static int largestAdjacentSum(int[ ] inputArray)
 	{
-//		int max=-99999,sum=0;
-//
-//		for(int i=0; i<inputArray.length-1;)
-//		{
-//			if(i<inputArray.length)
-//			sum=inputArray[i]+inputArray[++i];
-//
-//			if(sum>max)
-//				max=sum;
-//		}
-//
-//		return max;
+		int max=-99999,sum=0;
 
-		Integer max = Integer.MIN_VALUE;
-		for (int i = 1; i < inputArray.length; i++) {
-			System.out.println("Product value: "+ inputArray[i] * inputArray[i - 1]);
-
-			max = Math.max(inputArray[i] * inputArray[i - 1], max);
+		for(int i=1; i<inputArray.length; i++)
+		{
+			sum = inputArray[i] + inputArray[i-1];
+			if(sum>max)
+				max=sum;
 		}
 
 		return max;
+
+//		Integer max = Integer.MIN_VALUE;
+//		for (int i = 1; i < inputArray.length; i++) {
+//			System.out.println("Product value: "+ inputArray[i] * inputArray[i - 1]);
+//
+//			max = Math.max(inputArray[i] * inputArray[i - 1], max);
+//		}
+
+		//return max;
 	}
 
 
