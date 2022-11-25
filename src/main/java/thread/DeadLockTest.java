@@ -2,67 +2,41 @@ package thread;
 
 public class DeadLockTest {
 
+    //https://www.javatpoint.com/deadlock-in-java#:~:text=Deadlock%20can%20occur%20in%20a,the%20condition%20is%20called%20deadlock.
+
     //Book reference OCA/OCP  page:754(802/994)
-
-    private static class Resource{
-        public int value;
-    }
-
-    private Resource resourceA = new Resource();
-    private Resource resourceB = new Resource();
-
-    public int read(){
-        synchronized (resourceA){
-            synchronized (resourceB){
-                return resourceB.value + resourceA.value;
-            }
-        }
-    }
-
-    public void write(int a, int b){
-        synchronized (resourceB){
-            synchronized (resourceA){
-                resourceA.value = a;
-                resourceB.value = b;
-            }
-        }
-    }
-
-
     public static void main(String[] args) {
+        final String resource1 = "ratan jaiswal";
+        final String resource2 = "vimal jaiswal";
+        // t1 tries to lock resource1 then resource2
 
-        final String resource1 = "rocky";
-        final String resource2 = "Tuli";
+        Thread t1 = new Thread(() -> {
+            synchronized (resource1) {
+                System.out.println("Thread 1: locked resource 1");
 
-        Thread.currentThread().getName();
+                try { Thread.sleep(100);} catch (Exception e) {}
 
-        ReaderWorker readerWorker = new ReaderWorker();
-        WriteWorker writeWorker = new WriteWorker();
+                synchronized (resource2) {
+                    System.out.println("Thread 1: locked resource 2");
+                }
+            }
+        });
 
-        Thread threadRead = new Thread(readerWorker);
-        Thread threadWrite = new Thread(writeWorker);
-        threadRead.start();
-        threadWrite.start();
+        // t2 tries to lock resource2 then resource1
+        Thread t2 = new Thread(() -> {
+            synchronized (resource2) {
+                System.out.println("Thread 2: locked resource 2");
 
-        System.out.println("======== End Execution =======");
+                try { Thread.sleep(100);} catch (Exception e) {}
 
+                synchronized (resource1) {
+                    System.out.println("Thread 2: locked resource 1");
+                }
+            }
+        });
+
+
+        t1.start();
+        t2.start();
     }
-
-   static class ReaderWorker implements Runnable{
-        DeadLockTest deadLockTest = new DeadLockTest();
-        @Override
-        public void run() {
-            deadLockTest.read();
-        }
-    }
-
-   static class WriteWorker implements Runnable{
-        DeadLockTest deadLockTest = new DeadLockTest();
-        @Override
-        public void run(){
-            deadLockTest.write(10,20);
-        }
-    }
-
-
 }
