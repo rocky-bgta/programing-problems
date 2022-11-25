@@ -1,9 +1,6 @@
 package thread;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class WaitAndNotify {
     static Object lock = new Object();
     static int threadCount = 0;
