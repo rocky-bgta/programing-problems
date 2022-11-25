@@ -1,4 +1,4 @@
-package linkList;
+package link_list;
 
 public class Node {
     int value;

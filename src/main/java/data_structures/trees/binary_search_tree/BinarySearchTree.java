@@ -158,7 +158,9 @@ public class BinarySearchTree {
     ///////////////////////////////////////////////////////
     public ArrayList<Integer> breadthFirstSearch() {
         Node currentNode = this.root;
+
         ArrayList<Integer> resultArray = new ArrayList<>();
+
         ArrayList<Node> queue = new ArrayList<>();
         queue.add(currentNode);
 
@@ -191,6 +193,7 @@ public class BinarySearchTree {
 
         Node currentNode = queue.remove(0);
         resultArray.add(currentNode.value);
+
         if (currentNode.left != null) {
             queue.add(currentNode.left);
         }
@@ -236,18 +239,18 @@ public class BinarySearchTree {
         bst.insert(15);
         bst.insert(1);
 
-        System.out.println("bfs: " + bst.breadthFirstSearch());
-        System.out.println("look for 20: " + bst.lookup(20).value);
+    //    System.out.println("bfs: " + bst.breadthFirstSearch());
+    //    System.out.println("look for 20: " + bst.lookup(20).value);
 
-        ArrayList<Node> queue = new ArrayList<>();
-        queue.add(bst.root);
-        System.out.println("bfs recursive: " + bst.breadthFirstSearchRecursive(queue, new ArrayList<>()));
+    //    ArrayList<Node> queue = new ArrayList<>();
+     //   queue.add(bst.root);
+     //   System.out.println("bfs recursive: " + bst.breadthFirstSearchRecursive(queue, new ArrayList<>()));
 
         System.out.println("dfs inOrder: " + bst.DFSInOrder());
-        System.out.println("dfs preOrder: " + bst.DFSPreOrder());
-        System.out.println("dfs postOrder: " + bst.DFSPostOrder());
+     //   System.out.println("dfs preOrder: " + bst.DFSPreOrder());
+     //   System.out.println("dfs postOrder: " + bst.DFSPostOrder());
 
-        bst.remove(20);
+      //  bst.remove(20);
         System.out.println("look for 20 after removing 20: " + bst.lookup(20));
     }
 }

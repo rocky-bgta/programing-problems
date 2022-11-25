@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class HelperFunctions {
     // traverse in order
-    public ArrayList<Integer> traverseInOrder(Node node, ArrayList<Integer> array) {
+    public ArrayList<Integer>  traverseInOrder(Node node, ArrayList<Integer> array) {
         if (node.left != null) {
             traverseInOrder(node.left, array);
         }

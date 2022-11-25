@@ -1,4 +1,4 @@
-package linkList;
+package link_list;
 
 //https://www.youtube.com/watch?v=sUcVDPDHFJg&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=73
 
