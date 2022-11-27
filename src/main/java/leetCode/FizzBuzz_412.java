@@ -3,9 +3,11 @@ package leetCode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FizzBuzz {
+//https://leetcode.com/problems/fizz-buzz/
 
-    public List<String> fizzBuzz(int n) {
+public class FizzBuzz_412 {
+
+   static public List<String> fizzBuzz(int n) {
         List<String> list = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
@@ -19,5 +21,10 @@ public class FizzBuzz {
             }
         }
         return list;
+    }
+
+    public static void main(String[] args) {
+        int n =3;
+        System.out.println(fizzBuzz(n));
     }
 }

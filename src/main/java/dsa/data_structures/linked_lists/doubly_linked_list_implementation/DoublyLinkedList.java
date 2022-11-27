@@ -13,7 +13,7 @@ public class DoublyLinkedList {
         length = 1;
     }
 
-    public void append(int value) {
+    public void addToLast(int value) {
         Node newNode = new Node(value);
         newNode.previous = tail;
         tail.next = newNode;
@@ -21,7 +21,7 @@ public class DoublyLinkedList {
         length++;
     }
 
-    public void prepend(int value) {
+    public void addToFirst(int value) {
         Node newNode = new Node(value);
         head.previous = newNode;
         newNode.next = head;
@@ -49,9 +49,9 @@ public class DoublyLinkedList {
         if (index < 0 || index > length) {
             System.err.println("Index Out Of Bounds For Length " + length);
         } else if (index == 0) {
-            prepend(value);
+            addToFirst(value);
         } else if (index == length) {
-            append(value);
+            addToLast(value);
         } else {
             Node current = head;
             for (int i = 0; i < index - 1; i++) {
@@ -91,10 +91,10 @@ public class DoublyLinkedList {
 
     public static void main(String[] args) {
         DoublyLinkedList myDoublyLinkedList = new DoublyLinkedList(5);
-        myDoublyLinkedList.append(3);
-        myDoublyLinkedList.append(4);
-        myDoublyLinkedList.prepend(2);
-        myDoublyLinkedList.prepend(1);
+        myDoublyLinkedList.addToLast(3);
+        myDoublyLinkedList.addToLast(4);
+        myDoublyLinkedList.addToFirst(2);
+        myDoublyLinkedList.addToFirst(1);
         System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
         myDoublyLinkedList.remove(0);
         System.out.println(Arrays.toString(myDoublyLinkedList.printList()));

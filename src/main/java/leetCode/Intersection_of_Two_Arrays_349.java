@@ -1,7 +1,9 @@
 package leetCode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
+//https://leetcode.com/problems/intersection-of-two-arrays/
 public class Intersection_of_Two_Arrays_349 {
 
     public static void main(String[] args) {
@@ -35,7 +37,6 @@ public class Intersection_of_Two_Arrays_349 {
 
         }
         int[] result = new int[interjectionSet.size()];
-
         i = 0;
         for (int x : interjectionSet)
             result[i++] = x;

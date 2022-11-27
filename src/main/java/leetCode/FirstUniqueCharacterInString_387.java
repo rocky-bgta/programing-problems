@@ -3,7 +3,7 @@ package leetCode;
 import java.util.HashMap;
 import java.util.Map;
 //https://leetcode.com/problems/first-unique-character-in-a-string/
-public class FirstUniqueCharacterInString {
+public class FirstUniqueCharacterInString_387 {
 
     public int firstUniqChar(String s) {
 

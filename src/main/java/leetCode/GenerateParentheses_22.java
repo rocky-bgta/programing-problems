@@ -2,11 +2,12 @@ package leetCode;
 
 import java.util.ArrayList;
 import java.util.List;
+//https://leetcode.com/problems/generate-parentheses/
 
-public class GenerateParentheses {
+public class GenerateParentheses_22 {
 
     public static void main(String[] args) {
-        generateParenthesis(3);
+        generateParenthesis(1);
     }
 
     public static List<String> generateParenthesis(int n) {
@@ -26,15 +27,16 @@ public class GenerateParentheses {
             result.add(s);
             return;
         }
-
+        // finally s put into result
         if(left>0){
             System.out.println("left value = " + (left-1));
             dfs(result, s+"(", left-1, right);
         }
-
+        //actually s append the result
         if(right>0){
             System.out.println("right value = " + (right-1));
             dfs(result, s+")", left, right-1);
         }
+        //actually s append the result
     }
 }

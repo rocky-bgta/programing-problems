@@ -25,14 +25,16 @@ public class Stack {
             top = newNode;
             bottom = newNode;
         } else {
-            newNode.next = top;
-            top = newNode;
+            newNode.next = top; // top actually represent here previous node 1. link newNode to previous node
+            top = newNode;                                                 //2. then represent newNode as top
         }
         this.length++;
     }
 
-    public void pop() {
+    public Node pop() {
+        Node tempTop=null;
         if (length > 0) {
+            tempTop = top;
             top = top.next;
 
             if (length == 1) {
@@ -40,6 +42,7 @@ public class Stack {
             }
             length--;
         }
+        return tempTop;
     }
 
     public boolean isEmpty() {
@@ -59,7 +62,8 @@ public class Stack {
         myStack.push("Udemy");
         myStack.push("Discord");
         System.out.println(myStack.peek());
-        myStack.pop();
+        Node value = myStack.pop();
+        System.out.println(value);
         System.out.println(myStack.isEmpty());
         System.out.println(myStack.getLastElement());
     }

@@ -1,9 +1,15 @@
 package dsa.data_structures.queues.queue_using_linkedlist;
 
 public class Queue {
-    Node first = null;
-    Node last = null;
-    int length = 0;
+    Node first;
+    Node last;
+    int length;
+
+    Queue(){
+        this.first = null;
+        this.last = null;
+        this.length =0;
+    }
 
     public String peek() {
         if (this.length > 0) {
@@ -18,14 +24,16 @@ public class Queue {
         if (this.length == 0) {
             this.first = newNode;
         } else {
-            this.last.next = newNode;
+            this.last.next = newNode; // last.next here represent previous node
         }
         this.last = newNode;
         this.length++;
     }
 
-    public void dequeue() {
+    public Node dequeue() {
+        Node tempNode=null;
         if (this.length > 0) {
+            tempNode = this.first;
             this.first = this.first.next;
 
             if (this.length == 1) {
@@ -33,6 +41,7 @@ public class Queue {
             }
             this.length--;
         }
+        return tempNode;
     }
 
     public boolean isEmpty() {
@@ -46,7 +55,8 @@ public class Queue {
         myQueue.enqueue("Apple");
         myQueue.enqueue("Ball");
         myQueue.enqueue("Cat");
-        myQueue.dequeue();
+        Node node = myQueue.dequeue();
+        System.out.println(node.value);
         System.out.println(myQueue.peek());
     }
 }
