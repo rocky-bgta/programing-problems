@@ -3,31 +3,56 @@ package leetCode;
 //https://leetcode.com/problems/valid-palindrome/
 public class ValidPalindrome_125 {
 
+    /*
+    Example 1:
 
-    public boolean isPalindrome(String s){
-        String fixed_string = "";
+        Input: s = "A man, a plan, a canal: Panama"
+        Output: true
+        Explanation: "amanaplanacanalpanama" is a palindrome.
+        Example 2:
+
+        Input: s = "race a car"
+        Output: false
+        Explanation: "raceacar" is not a palindrome.
+        Example 3:
+
+        Input: s = " "
+        Output: true
+        Explanation: s is an empty string "" after removing non-alphanumeric characters.
+        Since an empty string reads the same forward and backward, it is a palindrome.
+     */
+
+
+    public static void main(String[] args) {
+        //String s = "A man, a plan, a canal: Panama";
+        String s = s = "race a car";
+        System.out.println(isPalindrome(s));
+    }
+
+   static public boolean isPalindrome(String s){
+        String tempString = "";
 
         for(char c : s.toCharArray()){
             if(Character.isDigit(c) || Character.isLetter(c)){
-                fixed_string +=c;
+                tempString +=c;
             }
         }
 
-        fixed_string = fixed_string.toLowerCase();
-        int a_pointer = 0;
-        int b_pointer = fixed_string.length()-1;
+        tempString = tempString.toLowerCase();
+        int first = 0;
+        int last = tempString.length()-1;
 
-        while (a_pointer<=b_pointer){
-            if(fixed_string.charAt(a_pointer)!=fixed_string.charAt(b_pointer)){
+        while (first<=last){
+            char startingChar = tempString.charAt(first);
+            char endingChar = tempString.charAt(last);
+            if(startingChar!=endingChar){
                 return false;
             }
 
-            a_pointer+=1;
-            b_pointer-=1;
+            first++;
+            last--;
         }
-
         return true;
-
     }
 
 }
