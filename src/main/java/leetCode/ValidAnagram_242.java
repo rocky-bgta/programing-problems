@@ -1,14 +1,30 @@
 package leetCode;
 
 import java.util.Arrays;
+//https://leetcode.com/problems/valid-anagram/
+public class ValidAnagram_242 {
 
-public class ValidAnagram {
+    /*
+    Example 1:
+
+        Input: s = "anagram", t = "nagaram"
+        Output: true
+        Example 2:
+
+        Input: s = "rat", t = "car"
+        Output: false
+
+
+        Two strings are said to be anagram
+        if we can form one string by arranging the characters of another string.
+        For example, Race and Care. Here, we can form Race by arranging the characters of Care.
+     */
 
     public static void main(String[] args) {
        String s = "anagram";
        String t = "nagaram";
 
-       ValidAnagram.isAnagram(s,t);
+        ValidAnagram_242.isAnagram(s,t);
     }
 
     public static boolean isAnagram(String s, String t){
