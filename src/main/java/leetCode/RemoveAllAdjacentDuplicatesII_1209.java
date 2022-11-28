@@ -1,8 +1,7 @@
 package leetCode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Stack;
+//https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
 
 public class RemoveAllAdjacentDuplicatesII_1209 {
 
@@ -15,12 +14,31 @@ public class RemoveAllAdjacentDuplicatesII_1209 {
         }
     }
 
+    /*
+    Example 1:
+
+    Input: s = "abcd", k = 2
+    Output: "abcd"
+    Explanation: There's nothing to delete.
+    Example 2:
+
+    Input: s = "deeedbbcccbdaa", k = 3
+    Output: "aa"
+    Explanation:
+    First delete "eee" and "ccc", get "ddbbbdaa"
+    Then delete "bbb", get "dddaa"
+    Finally delete "ddd", get "aa"
+    Example 3:
+
+    Input: s = "pbbcggttciiippooaais", k = 2
+    Output: "ps"
+     */
     public static void main(String[] args) {
         //Input: s = "eeedbbcccbdaa", k = 3
         String s = "deee";
         int k=3;
 
-        removeDuplicates(s,k);
+        System.out.println(removeDuplicates(s,k));
     }
 
     //https://www.youtube.com/watch?v=RJpy4A7LJrs
@@ -31,7 +49,7 @@ public class RemoveAllAdjacentDuplicatesII_1209 {
         int n = s.length();
         if(n<k) return s;
 
-        Deque<Node> stack = new ArrayDeque<>();
+        Stack<Node> stack = new Stack<>();
         for(char c : s.toCharArray()){
             if(stack.isEmpty() || c!=stack.peek().ch){
                 stack.push(new Node(c));
