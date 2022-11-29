@@ -67,8 +67,10 @@ public class DoublyLinkedList {
     }
 
     public void addNodeToFirst(Node node){
-        node.next = head;
-        head.previous = node;
+        Node tempNode = head.next;
+        node.next  = tempNode;
+        tempNode.previous = node;
+        head.next = node;
         head = node;
     }
 
@@ -104,7 +106,9 @@ public class DoublyLinkedList {
     }
 
     public static void main(String[] args) {
-        DoublyLinkedList myDoublyLinkedList = new DoublyLinkedList(5);
+        DoublyLinkedList myDoublyLinkedList = new DoublyLinkedList(1);
+        myDoublyLinkedList.addToLast(2);
+        myDoublyLinkedList.addToLast(3);
         Node node = new Node (4);
         myDoublyLinkedList.addNodeToFirst(node);
         System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
