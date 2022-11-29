@@ -66,6 +66,20 @@ public class DoublyLinkedList {
         }
     }
 
+    public void addNodeToFirst(Node node){
+        node.next = head;
+        head.previous = node;
+        head = node;
+    }
+
+    public void removeNode(Node node){
+        Node nextNode = node.next;
+        Node prevNode = node.previous;
+
+        nextNode.previous = prevNode;
+        prevNode.next = nextNode;
+    }
+
     public void remove(int index) {
         if (index < 0 || index > length) {
             System.err.println("Index Out Of Bounds For Length " + length);
@@ -91,21 +105,24 @@ public class DoublyLinkedList {
 
     public static void main(String[] args) {
         DoublyLinkedList myDoublyLinkedList = new DoublyLinkedList(5);
-        myDoublyLinkedList.addToLast(3);
-        myDoublyLinkedList.addToLast(4);
-        myDoublyLinkedList.addToFirst(2);
-        myDoublyLinkedList.addToFirst(1);
+        Node node = new Node (4);
+        myDoublyLinkedList.addNodeToFirst(node);
         System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
-        myDoublyLinkedList.remove(0);
-        System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
-        myDoublyLinkedList.insert(2, 200);
-        System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
-        System.out.println("length: " + myDoublyLinkedList.getLength());
-
-        System.out.println("head value: " + myDoublyLinkedList.head.value);
-        System.out.println("head.previous: " + myDoublyLinkedList.head.previous);
-
-        System.out.println("tail value: " + myDoublyLinkedList.tail.value);
-        System.out.println("tail.next: " + myDoublyLinkedList.tail.next);
+//        myDoublyLinkedList.addToLast(3);
+//        myDoublyLinkedList.addToLast(4);
+//        myDoublyLinkedList.addToFirst(2);
+//        myDoublyLinkedList.addToFirst(1);
+//        System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
+//        myDoublyLinkedList.remove(0);
+//        System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
+//        myDoublyLinkedList.insert(2, 200);
+//        System.out.println(Arrays.toString(myDoublyLinkedList.printList()));
+//        System.out.println("length: " + myDoublyLinkedList.getLength());
+//
+//        System.out.println("head value: " + myDoublyLinkedList.head.value);
+//        System.out.println("head.previous: " + myDoublyLinkedList.head.previous);
+//
+//        System.out.println("tail value: " + myDoublyLinkedList.tail.value);
+//        System.out.println("tail.next: " + myDoublyLinkedList.tail.next);
     }
 }
