@@ -148,5 +148,32 @@ public class POJOEncryptionDecryption {
 
     // Step 4: Parse decrypted string as JSON to get the original POJO object
     const originalPOJO = JSON.parse(decryptedString);
-    console.log(originalPOJO);*/
+    console.log(originalPOJO);
+
+    //===============================================
+
+    Data encryption
+
+    const crypto = require('crypto');
+        // Step 1: Convert the original POJO object to a string
+        const originalPOJO = {name: 'John Doe', age: 30};
+        const originalString = JSON.stringify(originalPOJO);
+
+        // Step 2: Convert the secret key to a binary format
+        const secretKey = 'secret-key-12345';
+        const key = Uint8Array.from(secretKey, c => c.charCodeAt(0));
+
+        // Step 3: Encrypt the string using AES-128-ECB algorithm
+        const algorithm = 'aes-128-ecb';
+        const cipher = crypto.createCipheriv(algorithm, key, '');
+        let encryptedData = cipher.update(originalString, 'utf-8', 'base64');
+        encryptedData += cipher.final('base64');
+
+        // Step 4: Print the encrypted data
+        console.log(encryptedData);
+
+
+       Encrypted Data:  uRFZYvWWQTlqDFAtvYLuBwtWbewtz+3AcLJBauIjAps=
+
+    */
 }
