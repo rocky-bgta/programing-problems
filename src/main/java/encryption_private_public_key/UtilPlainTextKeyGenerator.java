@@ -7,7 +7,7 @@ import java.util.Base64;
 
 public class UtilPlainTextKeyGenerator {
 
-    private static String getPEM(Key key) throws Exception {
+    public static String getPEM(Key key) throws Exception {
         byte[] keyBytes = key.getEncoded();
         String type;
         if (key instanceof PublicKey) {
