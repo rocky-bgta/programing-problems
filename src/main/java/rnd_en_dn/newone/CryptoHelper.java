@@ -3,8 +3,11 @@ package rnd_en_dn.newone;
 import javax.crypto.Cipher;
 import javax.crypto.spec.OAEPParameterSpec;
 import javax.crypto.spec.PSource;
-import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -30,7 +33,7 @@ public class CryptoHelper {
             //String privateKeyfile = "../pvkey.pem";
             // https://acte.ltd/utils/openssl
 
-          /*  # Private key
+/*  # Private key
             openssl genpkey -algorithm RSA -out private.pem -pkeyopt rsa_keygen_bits:2048
 
 # Public key
@@ -146,13 +149,23 @@ public class CryptoHelper {
   
     // https://docs.oracle.com/javase/8/docs/api/java/security/spec/PKCS8EncodedKeySpec.html
     public static PrivateKey readPrivateKeyFromPem_PKCS8(String keyFilename) throws Exception {
-        byte[] keyBytes = Base64.getDecoder().decode(keyFilename);
-       // String keyString = new String(keyBytes);
-        //String privKeyPEM = keyString.replace("-----BEGIN PRIVATE KEY-----", "");
-        //privKeyPEM = privKeyPEM.replace("-----END PRIVATE KEY-----", "");
-        //privKeyPEM = privKeyPEM.replace("\r", "");
-        //privKeyPEM = privKeyPEM.replace("\n", "");
-        //keyBytes = Base64.getDecoder().decode(privKeyPEM);
+        //byte[] keyBytes = Base64.getDecoder().decode(keyFilename);
+        ClassLoader classLoader = CryptoHelper.class.getClassLoader();
+        URL resourceUrl = classLoader.getResource("private_key.pem");
+        Path filePath = Paths.get(resourceUrl.toURI());
+
+        // Read the file content as an InputStream
+        InputStream inputStream = Files.newInputStream(filePath);
+        byte[] keyBytes = new byte[inputStream.available()];
+        inputStream.read(keyBytes);
+
+
+        String keyString = new String(keyBytes);
+        String privKeyPEM = keyString.replace("-----BEGIN PRIVATE KEY-----", "");
+        privKeyPEM = privKeyPEM.replace("-----END PRIVATE KEY-----", "");
+        privKeyPEM = privKeyPEM.replace("\r", "");
+        privKeyPEM = privKeyPEM.replace("\n", "");
+        keyBytes = Base64.getDecoder().decode(privKeyPEM);
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory kf = KeyFactory.getInstance("RSA");
         return kf.generatePrivate(spec);
@@ -160,13 +173,22 @@ public class CryptoHelper {
   
     // https://docs.oracle.com/javase/8/docs/api/java/security/spec/X509EncodedKeySpec.html
     public static PublicKey readPublicKeyFromPem(String keyFilename) throws Exception {
-        byte[] keyBytes = Base64.getDecoder().decode(keyFilename); //Files.readAllBytes(new File(keyFilename).toPath());
-        //String keyString = new String(keyBytes);
-        //String privKeyPEM = keyString.replace("-----BEGIN PUBLIC KEY-----", "");
-        //privKeyPEM = privKeyPEM.replace("-----END PUBLIC KEY-----", "");
-        //privKeyPEM = privKeyPEM.replace("\r", "");
-        //privKeyPEM = privKeyPEM.replace("\n", "");
-        //keyBytes = Base64.getDecoder().decode(privKeyPEM);
+        ClassLoader classLoader = CryptoHelper.class.getClassLoader();
+        URL resourceUrl = classLoader.getResource("public_key.pem");
+        Path filePath = Paths.get(resourceUrl.toURI());
+
+        // Read the file content as an InputStream
+        InputStream inputStream = Files.newInputStream(filePath);
+        byte[] keyBytes = new byte[inputStream.available()];
+        inputStream.read(keyBytes);
+
+        //byte[] keyBytes = Base64.getDecoder().decode(keyFilename); //Files.readAllBytes(new File(keyFilename).toPath());
+        String keyString = new String(keyBytes);
+        String privKeyPEM = keyString.replace("-----BEGIN PUBLIC KEY-----", "");
+        privKeyPEM = privKeyPEM.replace("-----END PUBLIC KEY-----", "");
+        privKeyPEM = privKeyPEM.replace("\r", "");
+        privKeyPEM = privKeyPEM.replace("\n", "");
+        keyBytes = Base64.getDecoder().decode(privKeyPEM);
         X509EncodedKeySpec spec = new X509EncodedKeySpec(keyBytes);
         KeyFactory kf = KeyFactory.getInstance("RSA");
         return kf.generatePublic(spec);
