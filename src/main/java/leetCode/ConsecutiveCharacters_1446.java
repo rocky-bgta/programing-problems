@@ -1,5 +1,10 @@
 package leetCode;
-//https://leetcode.com/problems/consecutive-characters/
+/*
+  https://leetcode.com/problems/consecutive-characters/
+
+  https://www.youtube.com/watch?v=O5ugFbLN-zY
+
+ */
 
 /*
 

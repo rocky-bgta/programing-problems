@@ -1,5 +1,8 @@
 package leetCode;
 
+
+//https://leetcode.com/problems/add-binary/description/
+
 public class Add_Binary_67 {
 
     public static void main(String[] args) {
@@ -16,13 +19,15 @@ public class Add_Binary_67 {
         int j = b.length()-1;
         int carry = 0;
         int sum = 0;
+
         while (i>=0 || j >=0){
 
             if(i >=0) {
-                sum += a.charAt(i) - '0'; //convert char to number (ASCII number) ex. 0 = 48 and 1 = 49
+                sum+= a.charAt(i) - '0'; //convert char to number (ASCII number) ex. 0 = 48 and 1 = 49
             }
             if(j >=0)
                 sum+= b.charAt(j) - '0';
+
             sb.append(sum % 2); // if sum is 2 this operation result 0 and append to the  spring
             carry = sum/2; // if sum = 2 then sum/2 result 1 which is carry
             sum = carry;
