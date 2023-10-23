@@ -3,7 +3,9 @@ package leetCode;
 import java.util.ArrayList;
 import java.util.List;
 
-//https://leetcode.com/problems/fizz-buzz/
+/*
+         https://leetcode.com/problems/fizz-buzz/
+ */
 
 public class FizzBuzz_412 {
 
@@ -17,7 +19,7 @@ public class FizzBuzz_412 {
             } else if (i % 5 == 0) {
                 list.add("Buzz");
             } else {
-                list.add(String.valueOf(i));
+                list.add(String.valueOf(i)); //remember
             }
         }
         return list;

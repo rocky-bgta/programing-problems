@@ -1,6 +1,9 @@
 package leetCode;
 
-//https://leetcode.com/problems/valid-palindrome/
+/*
+    https://leetcode.com/problems/valid-palindrome/
+ */
+
 public class ValidPalindrome_125 {
 
     /*
@@ -30,15 +33,15 @@ public class ValidPalindrome_125 {
     }
 
    static public boolean isPalindrome(String s){
-        String tempString = "";
+        StringBuilder tempString = new StringBuilder();
 
         for(char c : s.toCharArray()){
             if(Character.isDigit(c) || Character.isLetter(c)){
-                tempString +=c;
+                tempString.append(c);
             }
         }
 
-        tempString = tempString.toLowerCase();
+        tempString = new StringBuilder(tempString.toString().toLowerCase());
         int first = 0;
         int last = tempString.length()-1;
 
