@@ -1,20 +1,31 @@
 package leetCode;
 
-//https://leetcode.com/problems/rotate-image/
+/*
+    https://leetcode.com/problems/rotate-image/
+ */
 public class Rotate_Image_48 {
 
     public static void main(String[] args) {
-       int matrix[][] = {
+      /* int matrix[][] = {
                             {5,1,9,11},
                             {2,4,8,10},
                             {13,3,6,7},
                             {15,14,12,16}
-                        };
+                        };*/
+
+        int matrix[][] = {
+                {2,   4, -1},
+                {-10, 5, 11},
+                {18, -7,  6},
+        };
 
        Rotate_Image_48.rotate(matrix);
     }
 
-    //https://www.youtube.com/watch?v=SA867FvqHrM
+    /*
+        https://www.youtube.com/watch?v=SA867FvqHrM
+     */
+
     public static void rotate(int[][] matrix){
         int length = matrix.length;
         // first turn all row  to column
