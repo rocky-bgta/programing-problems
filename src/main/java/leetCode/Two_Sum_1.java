@@ -13,7 +13,7 @@ public class Two_Sum_1 {
         int[] nums = {2,7,11,15};
         int target = 9;
 
-        int result[]= twoSum(nums,target);
+        int[] result= twoSum(nums,target);
         System.out.printf(Arrays.toString(result));
 
     }

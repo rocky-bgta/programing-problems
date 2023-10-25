@@ -1,5 +1,9 @@
 package leetCode;
-//https://leetcode.com/problems/search-insert-position/
+/*
+    https://leetcode.com/problems/search-insert-position/
+
+ */
+
 public class Search_Insert_Position_35 {
 
     public static void main(String[] args) {
@@ -10,7 +14,11 @@ public class Search_Insert_Position_35 {
 
         searchInsert(nums,target);
     }
-//https://www.youtube.com/watch?v=p07ahfFzMi0
+
+    /*
+        https://www.youtube.com/watch?v=p07ahfFzMi0
+     */
+
 
     public static int searchInsert(int[] nums, int target) {
         int low = 0;
@@ -18,7 +26,7 @@ public class Search_Insert_Position_35 {
 
         while(low<=high){
 
-            int mid = low + (high-low)/2;
+            int mid = (high+low)/2;
 
             if(nums[mid]==target){
                 return mid;
