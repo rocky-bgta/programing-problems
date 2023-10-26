@@ -1,7 +1,10 @@
 package leetCode;
 
 import java.util.Stack;
-//https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+/*
+    https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+
+ */
 
 public class RemoveAllAdjacentDuplicatesII_1209 {
 
@@ -35,8 +38,8 @@ public class RemoveAllAdjacentDuplicatesII_1209 {
      */
     public static void main(String[] args) {
         //Input: s = "eeedbbcccbdaa", k = 3
-        String s = "deee";
-        int k=3;
+        String s = "pbbcggttciiippooaais";
+        int k=2;
 
         System.out.println(removeDuplicates(s,k));
     }
@@ -71,7 +74,7 @@ public class RemoveAllAdjacentDuplicatesII_1209 {
                 }
         }
 
-        return sb.reverse().toString();
+        return sb.toString();
     }
 
 }

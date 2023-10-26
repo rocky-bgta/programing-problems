@@ -1,9 +1,15 @@
 package leetCode;
-//https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+
+
+/*
+
+  https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+
+ */
 
 import java.util.Stack;
 
-//https://www.youtube.com/watch?v=hXEEr5WekSQ
+// https://www.youtube.com/watch?v=hXEEr5WekSQ
 public class RemoveAllAdjacentDuplicate_1047 {
 
     /*
