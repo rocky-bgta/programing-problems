@@ -1,13 +1,16 @@
 package leetCode;
 
 public class MergeSortedArray_88 {
-    //https://leetcode.com/problems/merge-sorted-array/
-//
-//    Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
-//    Output: [1,2,2,3,5,6]
-//    Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
-//    The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
-    //https://www.youtube.com/watch?v=C4oBXLr3zos
+    /*
+        https://leetcode.com/problems/merge-sorted-array/
+
+    Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+    Output: [1,2,2,3,5,6]
+    Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+    The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+    https://www.youtube.com/watch?v=C4oBXLr3zos
+     */
+
 
     public void merge(int[] nums1, int m, int[] nums2, int n){
         int p1= m-1, p2 = n-1, i = m+n-1;

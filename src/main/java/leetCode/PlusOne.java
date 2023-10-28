@@ -1,5 +1,10 @@
 package leetCode;
 
+/*
+    https://leetcode.com/problems/plus-one/description/
+
+ */
+
 public class PlusOne {
     /*
     Input: digits = [1,2,3]
@@ -24,7 +29,7 @@ public class PlusOne {
     */
 
     public static void main(String[] args) {
-        int[] digits = {9};
+        int[] digits = {99};
         plusOne(digits);
     }
 

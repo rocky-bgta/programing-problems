@@ -2,25 +2,27 @@ package leetCode;
 
 public class Maximum_Subarray_53 {
 
+    /*
+        https://leetcode.com/problems/maximum-subarray/description/
+     */
 
     public static void main(String[] args) {
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         maxSubArray(nums);
     }
-    //https://www.youtube.com/watch?v=HCL4_bOd3-4
+
+    //https://www.youtube.com/watch?v=GrNSGC8Z2T0
+
     public static int maxSubArray(int[] nums) {
 
-        int sum = nums[0];
-        int output = nums[0];
-        for(int i=1; i<nums.length;i++){
+        int max_so_far = nums[0];
+        int curr_max = nums[0];
 
-            System.out.println(sum+nums[i]);
-            System.out.println("nums["+i+"] " +" sum+nums["+i+"]" + (sum+nums[i])  );
-            sum = Math.max(nums[i],sum+nums[i]);
-            output = Math.max(output,sum);
+        for (int i = 1; i < nums.length; i++) {
+            curr_max = Math.max(nums[i], nums[i] + curr_max);
+            max_so_far = Math.max(curr_max, max_so_far);
         }
 
-        return output;
-
+        return max_so_far;
     }
 }

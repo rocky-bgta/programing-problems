@@ -11,7 +11,7 @@ public class RemoveAllAdjacentDuplicatesII_1209 {
    static class Node{
         char ch;
         int times;
-        public Node(char c){
+        Node(char c){
             ch =c;
             times=1;
         }

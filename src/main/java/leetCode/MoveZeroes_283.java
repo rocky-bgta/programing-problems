@@ -1,4 +1,11 @@
-package leetCode;/*
+package leetCode;
+
+/*
+
+https://leetcode.com/problems/move-zeroes/description/
+
+https://www.youtube.com/watch?v=k5lIW5XxC7g
+
 "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 Input: nums = [0,1,0,3,12]
@@ -12,26 +19,30 @@ public class MoveZeroes_283 {
 
 
     public static void main(String[] args) {
-        int nums[] =  {0,0,1,0,0,1};
+        //int nums[] =  {0,0,1,0,0,1};
 
+       // int nums[] =  {0,1,0,3,12};
 
-        if(nums.length==1)
-            if(nums[0]==0)
-                return;
+        int nums[] =  {1,0};
+        //[1,0]
 
-        int left=0, right=0;
-        int temp;
+    }
 
-        while (right<nums.length){
-            if(nums[right]==0) {
-                ++right;
-            }else {
-                temp = nums[left];
-                nums[left] = nums[right];
-                nums[right]= temp;
-                ++left;
-                ++right;
+    public void moveZeroes(int[] nums) {
+
+        // Start with the first position
+        int insertPosition = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            // FIll all non-zero numbers
+            if (nums[i] != 0) {
+                nums[insertPosition] = nums[i];
+                insertPosition++;
             }
+        }
+
+        while (insertPosition < nums.length) {
+            nums[insertPosition++] = 0;
         }
     }
 }
