@@ -1,5 +1,13 @@
 package leetCode;
 
+/*
+    https://leetcode.com/problems/longest-common-prefix/description/
+
+    https://www.youtube.com/watch?v=wtOQaovlvhY
+ */
+
+import java.util.Arrays;
+
 public class Longest_Common_Prefix_14 {
 
     public static void main(String[] args) {
@@ -8,16 +16,23 @@ public class Longest_Common_Prefix_14 {
     }
 
     public static String longestCommonPrefix(String[] strs) {
-        if(strs.length == 0)
-            return "";
+        StringBuilder result = new StringBuilder();
 
-        String prefix = strs[0];
-        for(int i=1; i<strs.length; i++){
-            while (strs[i].indexOf(prefix)!=0){
-                prefix = prefix.substring(0,prefix.length()-1);
-            }
+        // Sort the array
+        Arrays.sort(strs);
+
+        // Get the first and last strings
+        char[] first = strs[0].toCharArray();
+        char[] last = strs[strs.length - 1].toCharArray();
+
+        // Start comparing
+        for (int i = 0; i < first.length; i++) {
+            if (first[i] != last[i])
+                break;
+            result.append(first[i]);
         }
-        return prefix;
+
+        return result.toString();
     }
 
 }

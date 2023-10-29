@@ -34,7 +34,7 @@ public class MoveZeroes_283 {
         int insertPosition = 0;
 
         for (int i = 0; i < nums.length; i++) {
-            // FIll all non-zero numbers
+            // FIll all non-zero numbers from beginning
             if (nums[i] != 0) {
                 nums[insertPosition] = nums[i];
                 insertPosition++;
