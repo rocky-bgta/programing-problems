@@ -52,39 +52,58 @@ public class Editor {
 
     public String onPressLeft() {
         // TODO: fix the bugs in this method if there are any
-        if(this.text!=null && !this.text.isEmpty() && cursor!=0)
+        if (this.text != null && !this.text.isEmpty() && cursor > 0)
             this.cursor--;
         return this.text;
     }
 
     public String onPressRight() {
         // TODO: implement this method
-        if(this.text!=null || !this.text.isEmpty()){
-
-        }
-        return null;
+        if (this.text != null && !this.text.isEmpty() && cursor != this.text.length() - 1)
+            this.cursor++;
+        return this.text;
     }
 
     public String onPressHome() {
         // TODO: implement this method
-        return null;
+        if (this.text != null && !this.text.isEmpty())
+            this.cursor = 0;
+        return this.text;
     }
 
     public String onPressEnd() {
         // TODO: implement this method
-        return null;
-    }
-
-    public String onPressDelete() {
-        if (this.cursor == this.text.length()) {
-            return this.text;
-        }
+        if (isNotEmptyOrNull(this.text))
+            this.cursor = this.text.length() - 1;
         return this.text;
     }
 
+    // onPressDelete() - deletes the character (if there is one) adjacent to the right side of the cursor.
+    public String onPressDelete() {
+        if (isNotEmptyOrNull(this.text) && (this.text.length()) - cursor == this.text.length()) { // it the cursor is on beginning position
+            return this.text;
+        } else {
+            this.text = this.text.substring(0, this.cursor);
+            return this.text;
+        }
+    }
+
     public String onPressBackspace() {
+        String originalString,leftSubString,rightSubString;
+
         // TODO: implement this method
-        return null;
+        if (isNotEmptyOrNull(this.text) && (this.text.length()) - cursor == this.text.length()) { // it the cursor is on beginning position
+        } else {
+            originalString = this.text;
+            leftSubString = this.text.substring(0,cursor);
+            cursor++;
+            rightSubString = this.text.substring(cursor);
+
+            this.text = leftSubString + rightSubString;
+            return this.text;
+        }
+        return this.text;
+
     }
 
     public String onInputCharacter(String character) {
@@ -116,5 +135,12 @@ public class Editor {
         }
 
         return result;
+    }
+
+    private boolean isNotEmptyOrNull(String input) {
+        if (this.text != null && !this.text.isEmpty())
+            return true;
+        else
+            return false;
     }
 }
