@@ -124,6 +124,13 @@ public class Editor {
         return this.text;
     }
 
+    public static void main(String[] args) {
+        String input = "codeSignal";
+                     // 0123456789
+        deleteCharFromString(input,6);
+
+    }
+
 
     List<String> solution(String[] commands) {
         Editor editor = new Editor();
@@ -157,10 +164,11 @@ public class Editor {
             return false;
     }
 
-    private String[] deleteCharsFromString(String inputText, Integer index){
+    private static String[] deleteCharFromString(String inputText, Integer index){
         String[] result = new String[2];
         String leftSubString, rightSubString;
         leftSubString = inputText.substring(0, index);
+        index++;
         rightSubString = inputText.substring(index);
         result[0] = leftSubString;
         result[1] = rightSubString;
