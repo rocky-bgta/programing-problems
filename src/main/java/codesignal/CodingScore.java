@@ -35,14 +35,24 @@ public class CodingScore {
     static class ScoreLevel{
         String level;
         Integer value;
-        ScoreLevel(String level, Integer value){
+        Integer rank;
+        ScoreLevel(String level, Integer value, Integer rank){
             this.level = level;
             this.value = value;
+            this.rank = rank;
         }
     }
 
     public static void main(String[] args) {
-        int[] scores = {330, 723, 730, 825};
+        //int[] scores = {330, 723, 730, 825};
+        int[] scores = {712, 303, 337, 530,691};
+        Map<String,Integer> rank = new HashMap<>();
+        rank.put("Elite",1);
+        rank.put("Excellent",2);
+        rank.put("Good",3);
+        rank.put("Fair",4);
+        rank.put("Poor",5);
+
         Map<String,Integer> levelCount = new HashMap<>();
         List<ScoreLevel> finalCount = new ArrayList<>();
 
@@ -52,8 +62,9 @@ public class CodingScore {
             levelCount.put(level,levelCount.getOrDefault(level,0)+1);
         }
 
-        levelCount.forEach((k,v)->finalCount.add(new ScoreLevel(k,v)));
-        finalCount.sort((e1,e2)->e2.value.compareTo(e1.value));
+        levelCount.forEach((k,v)->finalCount.add(new ScoreLevel(k,v,rank.get(k))));
+        finalCount.sort((e1,e2)->e2.rank.compareTo(e1.rank));
+
 
         String[] result = new String[finalCount.size()];
 
