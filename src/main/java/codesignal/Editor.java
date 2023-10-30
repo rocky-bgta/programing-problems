@@ -80,21 +80,23 @@ public class Editor {
 
     // onPressDelete() - deletes the character (if there is one) adjacent to the right side of the cursor.
     public String onPressDelete() {
+        String leftSubString, rightSubString;
         if (isNotEmptyOrNull(this.text) && (this.text.length()) - cursor == this.text.length()) { // it the cursor is on beginning position
             return this.text;
         } else {
-            this.text = this.text.substring(0, this.cursor);
+            leftSubString = this.text.substring(0, this.cursor);
+            rightSubString = this.text.substring(cursor);
+            this.text = leftSubString + rightSubString;
             return this.text;
         }
     }
 
     public String onPressBackspace() {
-        String originalString,leftSubString,rightSubString;
+        String leftSubString,rightSubString;
 
         // TODO: implement this method
         if (isNotEmptyOrNull(this.text) && (this.text.length()) - cursor == this.text.length()) { // it the cursor is on beginning position
         } else {
-            originalString = this.text;
             leftSubString = this.text.substring(0,cursor);
             cursor++;
             rightSubString = this.text.substring(cursor);
@@ -106,9 +108,20 @@ public class Editor {
 
     }
 
+    //onInputCharacter(character) - inserts character on the right side of the cursor.
     public String onInputCharacter(String character) {
         // TODO: implement this method
-        return null;
+        String leftSubString, rightSubString;
+        if(this.cursor==0){
+            this.text=character+this.text;
+        }else if(this.text.length()-1==cursor){
+            this.text=this.text+character;
+        }else {
+            leftSubString = this.text.substring(0,cursor+1);
+            rightSubString = this.text.substring(cursor+1);
+            this.text = leftSubString+character+rightSubString;
+        }
+        return this.text;
     }
 
 
@@ -142,5 +155,15 @@ public class Editor {
             return true;
         else
             return false;
+    }
+
+    private String[] deleteCharsFromString(String inputText, Integer index){
+        String[] result = new String[2];
+        String leftSubString, rightSubString;
+        leftSubString = inputText.substring(0, index);
+        rightSubString = inputText.substring(index);
+        result[0] = leftSubString;
+        result[1] = rightSubString;
+        return result;
     }
 }
