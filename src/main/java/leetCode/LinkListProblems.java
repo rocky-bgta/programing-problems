@@ -35,6 +35,15 @@ public class LinkListProblems {
         current.next = node;
     }
 
+    public void deleteFirstNode(){
+        if(head==null){
+            return;
+        }else {
+            Node tempNode = head.next;
+            head = tempNode;
+        }
+    }
+
     public void insertNodeAtGivenPosition(Node givenNode, int position){
         if(position==1){
             givenNode.next = head;
@@ -223,6 +232,10 @@ public class LinkListProblems {
         Node hundradeNode = new Node(100);
         linkList.insertNodeAtGivenPosition(hundradeNode,3);
 
+        linkList.display();
+
+        System.out.println("Delete first node");
+        linkList.deleteFirstNode();
         linkList.display();
 
 
