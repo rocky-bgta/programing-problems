@@ -2,43 +2,43 @@ package link_list;
 //https://www.youtube.com/watch?v=Fg4VIjTdHx4&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=37
 public class SinglyLinkedList {
 
-    private ListNode head;
+    private Node head;
 
 
 
-    private static class ListNode{
+    private static class Node {
         private int data;
-        private ListNode next;
+        private Node next;
 
-        public ListNode(int data){
+        public Node(int data){
             this.data = data;
             this.next = null;
         }
     }
 
     public void insertFirst (int value){
-        ListNode ListNode = new ListNode(value);
-        ListNode.next = head;
-        head = ListNode;
+        Node Node = new Node(value);
+        Node.next = head;
+        head = Node;
     }
 
     public void insertLast(int value){
-        ListNode ListNode = new ListNode(value);
+        Node Node = new Node(value);
         if(head==null){
-            head = ListNode;
+            head = Node;
             return;
         }
-        ListNode current = head;
+        Node current = head;
         while (null != current.next){
             current = current.next;
         }
-        current.next = ListNode;
+        current.next = Node;
     }
 
 
-    public boolean isPalindrome(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
+    public boolean isPalindrome(Node head) {
+        Node slow = head;
+        Node fast = head;
 
         while (fast != null && fast.next != null){
             fast = fast.next.next;
@@ -59,15 +59,15 @@ public class SinglyLinkedList {
     }
 
     //https://www.youtube.com/watch?v=jY-EUKXYT20&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=56
-    public ListNode reverseList(ListNode head) {
+    public Node reverseList(Node head) {
 
         if(head!=null && head.next == null){
             return head;
         }
 
-        ListNode current = head;
-        ListNode previous = null;
-        ListNode next ;
+        Node current = head;
+        Node previous = null;
+        Node next ;
 
         while (current!=null){
             next = current.next;
@@ -79,8 +79,8 @@ public class SinglyLinkedList {
     }
 
     public boolean containsLoop(){
-        ListNode fastPtr = head;
-        ListNode slowPtr = head;
+        Node fastPtr = head;
+        Node slowPtr = head;
 
         while (fastPtr != null && fastPtr.next != null){
             fastPtr = fastPtr.next.next;
@@ -94,12 +94,12 @@ public class SinglyLinkedList {
         return false;
     }
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public Node removeNthFromEnd(Node head, int n) {
         if(head == null)
             return null;
 
         //get length of list
-        ListNode p = head;
+        Node p = head;
         int len = 0;
         while(p != null){
             len++;
@@ -124,9 +124,9 @@ public class SinglyLinkedList {
         return head;
     }
    // https://www.youtube.com/watch?v=IMWiPqoneT4&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=48
-    public static ListNode marge(ListNode list1, ListNode list2){
-        ListNode dummy = new ListNode(0);
-        ListNode tail = dummy;
+    public static Node marge(Node list1, Node list2){
+        Node dummy = new Node(0);
+        Node tail = dummy;
 
         while(list1 !=null  && list2 !=null){
             if(list1.data<list2.data){
@@ -151,20 +151,20 @@ public class SinglyLinkedList {
 
     //https://www.youtube.com/watch?v=D0sFHueV30U&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=47
     public void insert(int position, int value){
-        ListNode node = new ListNode(value);
+        Node node = new Node(value);
 
         if(position==1){
             node.next = head;
             head = node;
         }else {
-            ListNode previous = head;
+            Node previous = head;
             int count =1;
             while (count < position-1){
                 previous = previous.next;
                 count++;
             }
 
-            ListNode current = previous.next;
+            Node current = previous.next;
             previous.next = node;
             node.next = current;
 
@@ -176,19 +176,19 @@ public class SinglyLinkedList {
         if(position==1){
             head = head.next;
         }else {
-            ListNode previous = head;
+            Node previous = head;
             int count = 1;
             while (count < position -1){
                 previous = previous.next;
                 count++;
             }
-            ListNode current = previous.next;
+            Node current = previous.next;
             previous.next = current.next;
         }
     }
 
-    public void display(ListNode head){
-        ListNode current = head;
+    public void display(Node head){
+        Node current = head;
         while (current != null){
             System.out.print(current.data + "--->");
             current = current.next;
@@ -201,7 +201,7 @@ public class SinglyLinkedList {
             return 0;
         }
         int count = 0;
-        ListNode current = head;
+        Node current = head;
         while (current != null){
             count++;
             current = current.next;
@@ -276,8 +276,8 @@ public class SinglyLinkedList {
         //System.out.println("Length is - " + linkListDemo.length());
 
         //============================= reverse link list ========================
-        ListNode head = new ListNode(10);
-        ListNode second = new ListNode(8);
+        Node head = new Node(10);
+        Node second = new Node(8);
         head.next = second;
 
 

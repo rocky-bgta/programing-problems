@@ -81,7 +81,7 @@ public class Editor {
     // onPressDelete() - deletes the character (if there is one) adjacent to the right side of the cursor.
     public String onPressDelete() {
         String leftSubString, rightSubString;
-        if (isNotEmptyOrNull(this.text) && (this.text.length()) - cursor == this.text.length()) { // it the cursor is on beginning position
+        if (isNotEmptyOrNull(this.text) && (this.text.length() - cursor) == this.text.length()) { // it the cursor is on beginning position
             return this.text;
         } else {
             leftSubString = this.text.substring(0, this.cursor);

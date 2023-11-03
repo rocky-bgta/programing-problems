@@ -1,4 +1,5 @@
 package leetCode;
+
 //https://www.youtube.com/watch?v=Fg4VIjTdHx4&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=37
 public class LinkListProblems {
 
@@ -16,7 +17,8 @@ public class LinkListProblems {
 
     public void insertFirst (int value){
         Node node = new Node(value);
-        node.next = head;
+        node.next = head.next;
+        //node.next = head;
         head = node;
     }
 
@@ -155,7 +157,7 @@ public class LinkListProblems {
     }
 
     public void display(){
-        Node current = head;
+        Node current = head; // actually head and first node pointing to the same memory location
         while (current != null){
             System.out.print(current.data + "--->");
             current = current.next;
@@ -179,10 +181,31 @@ public class LinkListProblems {
     public static void main(String[] args) {
         LinkListProblems list1 = new LinkListProblems();
 
-        //linkListDemo.head = new ListNode(10);
-//        ListNode second = new ListNode(1);
-//        ListNode third = new ListNode(8);
-//        ListNode fourth = new ListNode(11);
+        LinkListProblems linkList = new LinkListProblems();
+
+        //linkList.head = new Node(0);
+
+        Node first = new Node(11);
+        Node second = new Node(8);
+        Node third = new Node(1);
+
+
+        first.next = second;
+        second.next = third;
+
+        linkList.head = first;
+
+        linkList.insertFirst(14);
+
+        linkList.display();
+
+
+
+
+        //linkListDemo.head = new Node(10);
+//        Node second = new Node(1);
+//        Node third = new Node(8);
+//        Node fourth = new Node(11);
 //
 //        linkListDemo.head.next = second;
 //        second.next = third;
