@@ -35,6 +35,26 @@ public class LinkListProblems {
         current.next = node;
     }
 
+    public void insertNodeAtGivenPosition(Node givenNode, int position){
+        if(position==1){
+            givenNode.next = head;
+            head = givenNode;
+        }else{
+            Node previousNode=null;
+            Node nextNode=null;
+            Node currentNode = head;
+            int pointer = 1;
+            while (pointer<position){
+                previousNode = currentNode.next;
+                pointer++;
+            }
+
+            nextNode = previousNode.next;
+            previousNode.next = givenNode;
+            givenNode.next = nextNode;
+        }
+    }
+
     public boolean isPalindrome(Node head) {
         Node slow = head;
         Node fast = head;
@@ -196,6 +216,12 @@ public class LinkListProblems {
         linkList.head = first;
 
         linkList.insertFirst(14);
+        //linkList.display();
+        Node positionNode = new Node(20);
+        linkList.insertNodeAtGivenPosition(positionNode,1);
+
+        Node hundradeNode = new Node(100);
+        linkList.insertNodeAtGivenPosition(hundradeNode,3);
 
         linkList.display();
 
