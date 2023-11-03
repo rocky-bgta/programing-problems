@@ -36,11 +36,21 @@ public class LinkListProblems {
     }
 
     public void deleteFirstNode(){
-        if(head==null){
-            return;
-        }else {
+        if(head!=null){
             Node tempNode = head.next;
             head = tempNode;
+        }
+    }
+
+    public void deleteLastNode(){
+        if(head!=null){
+            Node previousNode=head;
+            Node current=head;
+            while (current.next!=null){
+                previousNode = current;
+                current=current.next;
+            }
+            previousNode.next = null;
         }
     }
 
@@ -50,7 +60,7 @@ public class LinkListProblems {
             head = givenNode;
         }else{
             Node previousNode=null;
-            Node nextNode=null;
+            Node nextNode;
             Node currentNode = head;
             int pointer = 1;
             while (pointer<position){
@@ -236,6 +246,10 @@ public class LinkListProblems {
 
         System.out.println("Delete first node");
         linkList.deleteFirstNode();
+        linkList.display();
+
+        linkList.deleteLastNode();
+        System.out.println("Delete first node");
         linkList.display();
 
 
