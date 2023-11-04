@@ -74,6 +74,17 @@ public class LinkListProblems {
         }
     }
 
+    public void insertNodeToSortedList(Node givenNode){
+        Node currentNode = head;
+        Node tempNode = null;
+        while(currentNode!=null && currentNode.data<givenNode.data){
+            tempNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        tempNode.next = givenNode;
+        givenNode.next = currentNode;
+    }
+
     public boolean isPalindrome(Node head) {
         Node slow = head;
         Node fast = head;
@@ -96,16 +107,19 @@ public class LinkListProblems {
         return true;
     }
 
-
+    // https://www.youtube.com/watch?v=jY-EUKXYT20&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=25
     public Node reverseList(Node head) {
-        Node prev = null;
-        while (head!=null){
-            Node next_node = head.next;
-            head.next = prev;
-            prev = head;
-            head = next_node;
+        Node current = head;
+        Node nextNode;
+        Node previousNode=null;
+        while (current!=null){
+            nextNode = current.next;
+            current.next = previousNode; //
+            previousNode = current;
+            current = nextNode;
         }
-        return prev;
+        this.head = previousNode;
+        return this.head;
     }
 
     public boolean containsLoop(){
@@ -224,9 +238,9 @@ public class LinkListProblems {
 
         //linkList.head = new Node(0);
 
-        Node first = new Node(11);
+        Node first = new Node(1);
         Node second = new Node(8);
-        Node third = new Node(1);
+        Node third = new Node(10);
 
 
         first.next = second;
@@ -234,7 +248,7 @@ public class LinkListProblems {
 
         linkList.head = first;
 
-        linkList.insertFirst(14);
+        linkList.insertFirst(16);
         //linkList.display();
         Node positionNode = new Node(20);
         linkList.insertNodeAtGivenPosition(positionNode,1);
@@ -251,6 +265,17 @@ public class LinkListProblems {
         linkList.deleteLastNode();
         System.out.println("Delete first node");
         linkList.display();
+
+        System.out.println("Insert node to sorted list");
+        Node thirty = new Node(30);
+        linkList.insertNodeToSortedList(thirty);
+        linkList.display();
+
+        System.out.println("Reverse link list");
+        linkList.reverseList(linkList.head);
+        linkList.display();
+
+
 
 
 
