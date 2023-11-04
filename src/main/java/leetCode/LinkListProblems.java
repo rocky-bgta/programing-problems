@@ -109,6 +109,9 @@ public class LinkListProblems {
 
     // https://www.youtube.com/watch?v=jY-EUKXYT20&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=25
     public Node reverseList(Node head) {
+        if(head==null) {
+            return this.head;
+        }
         Node current = head;
         Node nextNode;
         Node previousNode=null;
@@ -120,6 +123,24 @@ public class LinkListProblems {
         }
         this.head = previousNode;
         return this.head;
+    }
+
+    /*
+    https://www.youtube.com/watch?v=DYpEpZzNmiA&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=26
+     */
+    public Node getMiddleNode(){
+        if(head == null){
+            return null;
+        }
+
+        Node slowPointer = this.head;
+        Node fastPointer = this.head;
+
+        while(fastPointer !=null && fastPointer.next!=null){
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+        return slowPointer;
     }
 
     public boolean containsLoop(){
@@ -136,6 +157,34 @@ public class LinkListProblems {
         }
 
         return false;
+    }
+
+    /*
+        https://www.youtube.com/watch?v=adS-s2Stg_A&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=27
+     */
+    public Node findNthNodeFromEnd(int n) {
+        if(this.head==null || this.head.next==null) {
+            return this.head;
+        }
+        if(n<=0){
+            throw new IllegalArgumentException("Invalid value: n = :"+n);
+        }
+        Node mainPointer = this.head;
+        Node refPointer = this.head;
+
+        int count= 0;
+        while (count<n){
+            if(refPointer==null){
+                throw new IllegalArgumentException(n+ " is greater then number of nodes in list");
+            }
+            refPointer = refPointer.next;
+            count++;
+        }
+        while (refPointer!=null){
+            refPointer = refPointer.next;
+            mainPointer = mainPointer.next;
+        }
+        return mainPointer;
     }
 
     public Node removeNthFromEnd(Node head, int n) {
