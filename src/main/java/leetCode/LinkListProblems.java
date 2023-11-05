@@ -110,18 +110,23 @@ public class LinkListProblems {
     }
 
     // https://www.youtube.com/watch?v=jY-EUKXYT20&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=25
+    /*
+        1-->2-->3-->4-->5-->null
+        5-->4-->3-->2-->1-->null
+     */
+
     public Node reverseList(Node head) {
         if(head==null) {
             return this.head;
         }
         Node current = head;
         Node nextNode;
-        Node previousNode=null;
+        Node previousNode=null; //
         while (current!=null){
-            nextNode = current.next;
-            current.next = previousNode; //
-            previousNode = current;
-            current = nextNode;
+            nextNode = current.next; // 2-->3-->4-->5-->null
+            current.next = previousNode; // 1-->null
+            previousNode = current; // Here previous act a head node of reverse link list
+            current = nextNode; // Here we work from 2
         }
         this.head = previousNode;
         return this.head;
