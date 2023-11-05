@@ -177,7 +177,7 @@ public class LinkListProblems {
         Node temp = head;
         while (slowPointer!=temp){
             temp = temp.next;
-            slowPointer = slowPointer.next
+            slowPointer = slowPointer.next;
         }
         return temp;
     }
