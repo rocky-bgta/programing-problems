@@ -1,5 +1,7 @@
 package leetCode;
 
+import jdk.nashorn.internal.runtime.arrays.IteratorAction;
+
 //https://www.youtube.com/watch?v=Fg4VIjTdHx4&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=37
 public class LinkListProblems {
 
@@ -126,7 +128,7 @@ public class LinkListProblems {
     }
 
     /*
-    https://www.youtube.com/watch?v=DYpEpZzNmiA&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=26
+        https://www.youtube.com/watch?v=DYpEpZzNmiA&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=26
      */
     public Node getMiddleNode(){
         if(head == null){
@@ -143,6 +145,9 @@ public class LinkListProblems {
         return slowPointer;
     }
 
+    /*
+        https://www.youtube.com/watch?v=rOpnLs0lXy0&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=28
+     */
     public boolean containsLoop(){
         Node fastPtr = head;
         Node slowPtr = head;
@@ -154,10 +159,43 @@ public class LinkListProblems {
             if(slowPtr == fastPtr){
                 return true;
             }
+
+            //getStartingNodeOfALoop(slowPtr);
+            //removeLoop(slowPointer)
         }
 
         return false;
     }
+
+    /*
+        https://www.youtube.com/watch?v=yKNOZ8bPdRQ&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=30
+
+        Explanation:
+        https://www.youtube.com/watch?v=HXNJSkh5kFo&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=32
+     */
+    public Node getStartingNodeOfALoop(Node slowPointer){
+        Node temp = head;
+        while (slowPointer!=temp){
+            temp = temp.next;
+            slowPointer = slowPointer.next
+        }
+        return temp;
+    }
+
+    /*
+        https://www.youtube.com/watch?v=LWDVM_kgvdE&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=33
+
+     */
+
+    public void removeLoop(Node slowPointer){
+        Node temp = head;
+        while (slowPointer.next!=temp.next){
+            temp = temp.next;
+            slowPointer = slowPointer.next;
+        }
+        slowPointer.next = null;
+    }
+
 
     /*
         https://www.youtube.com/watch?v=adS-s2Stg_A&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=27
