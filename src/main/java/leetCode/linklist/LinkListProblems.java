@@ -1,6 +1,4 @@
-package leetCode;
-
-import jdk.nashorn.internal.runtime.arrays.IteratorAction;
+package leetCode.linklist;
 
 //https://www.youtube.com/watch?v=Fg4VIjTdHx4&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d&index=37
 public class LinkListProblems {

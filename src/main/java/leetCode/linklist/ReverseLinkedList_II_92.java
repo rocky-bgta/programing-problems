@@ -1,24 +1,30 @@
-package leetCode;
+package leetCode.linklist;
+
+/*
+    https://leetcode.com/problems/reverse-linked-list-ii/submissions/1092541454/
+ */
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
 
 public class ReverseLinkedList_II_92 {
+
+    private static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
 
     static ListNode head;
 
