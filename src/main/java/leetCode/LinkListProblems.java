@@ -259,7 +259,17 @@ public class LinkListProblems {
         }
         return head;
     }
-   // https://www.youtube.com/watch?v=IMWiPqoneT4&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=48
+
+
+    /*
+        https://leetcode.com/problems/merge-two-sorted-lists/description/
+     */
+
+    /*
+        https://www.youtube.com/watch?v=IMWiPqoneT4&list=PL6Zs6LgrJj3tFNF3RvHDAvZcgOrvGWNRi&index=48
+
+        Explanations
+    */
     public static Node marge(Node list1, Node list2){
         Node dummy = new Node(0);
         Node tail = dummy;
