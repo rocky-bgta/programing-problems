@@ -51,50 +51,39 @@ public class ReverseLinkedList_II_92 {
         System.out.println("null");
     }
 
+    /*
+        Explanation on Udemy course
+     */
+
     public static ListNode reverseBetween(ListNode head, int left, int right) {
-
-        if (head == null || head.next == null)
-            return head;
-
-        int count = 0;
-        ListNode leftPrevious = null, rightPrevious = null;
-        ListNode leftNode = null;
-        ListNode rightNode = null;
-
+        int currentPosition =1;
         ListNode currentNode = head;
+        ListNode start = head;
 
-        while (count < left) {
-            leftPrevious = currentNode;
-            leftNode = currentNode.next;
+        while(currentPosition < left){
+            start = currentNode;
             currentNode = currentNode.next;
-            count++;
-        }
-        count = 0;
-
-        while (count < right-left) {
-            //rightPrevious = currentNode;
-            rightNode = currentNode.next;
-            currentNode = currentNode.next;
-            count++;
+            currentPosition++;
         }
 
-        ListNode nextNode;
-        ListNode previousNode = null;
-        currentNode = leftNode;
+        ListNode newList = null;
+        ListNode tail=currentNode;
 
-        while (left < right) {
-            nextNode = currentNode.next;
-            currentNode.next = previousNode;
-            previousNode = currentNode;
-
-            currentNode = nextNode;
-            left++;
+        while(currentPosition>=left && currentPosition<=right){
+            ListNode next = currentNode.next;
+            currentNode.next = newList;
+            newList = currentNode;
+            currentNode = next;
+            currentPosition++;
         }
 
-        leftPrevious.next = previousNode;
-        currentNode.next = rightNode.next;
+        start.next = newList;
+        tail.next = currentNode;
 
-
-        return  previousNode;
+        if(left>1){
+            return head;
+        }else {
+            return newList;
+        }
     }
 }
