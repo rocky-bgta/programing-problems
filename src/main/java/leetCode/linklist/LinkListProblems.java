@@ -85,6 +85,10 @@ public class LinkListProblems {
         givenNode.next = currentNode;
     }
 
+    /*
+        https://www.youtube.com/watch?v=WyI5dXMHW5c
+        Explanation
+     */
     public boolean isPalindrome(Node head) {
         Node slow = head;
         Node fast = head;
@@ -163,7 +167,9 @@ public class LinkListProblems {
                 return true;
             }
 
+            //https://leetcode.com/problems/linked-list-cycle-ii/description/
             //getStartingNodeOfALoop(slowPtr);
+
             //removeLoop(slowPointer)
         }
 
