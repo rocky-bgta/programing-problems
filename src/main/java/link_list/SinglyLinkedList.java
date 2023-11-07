@@ -35,6 +35,9 @@ public class SinglyLinkedList {
         current.next = Node;
     }
 
+    /*
+        https://www.youtube.com/watch?v=WyI5dXMHW5c
+     */
 
     public boolean isPalindrome(Node head) {
         Node slow = head;
