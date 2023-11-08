@@ -14,14 +14,14 @@ public class Queue {
     Stack<Integer> revStack = new Stack<>();
 
     public void push(int x) {
-        if (this.queueStack.size() == 0) {
+        if (this.queueStack.isEmpty()) {
             this.queueStack.push(x);
         } else {
-            while (this.queueStack.size() != 0) {
+            while (!this.queueStack.isEmpty()) {
                 this.revStack.push(this.queueStack.pop());
             }
             this.revStack.push(x);
-            while (this.revStack.size() != 0) {
+            while (!this.revStack.isEmpty()) {
                 this.queueStack.push(this.revStack.pop());
             }
         }
@@ -31,7 +31,7 @@ public class Queue {
      * Removes the element from in front of queue and returns that element.
      */
     public Integer pop() {
-        if (this.queueStack.size() > 0) {
+        if (!this.queueStack.isEmpty()) {
             return this.queueStack.pop();
         } else {
             return null;
@@ -43,7 +43,7 @@ public class Queue {
      * Get the front element.
      */
     public Integer peek() {
-        if (this.queueStack.size() > 0) {
+        if (!this.queueStack.isEmpty()) {
             return this.queueStack.get(this.queueStack.size() - 1);
         } else {
             return null;
@@ -54,7 +54,7 @@ public class Queue {
      * Returns whether the queue is empty.
      */
     public boolean empty() {
-        return this.queueStack.size() == 0;
+        return this.queueStack.isEmpty();
     }
 
     public static void main(String[] args) {
