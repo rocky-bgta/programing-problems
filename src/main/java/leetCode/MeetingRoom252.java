@@ -44,7 +44,7 @@ class Interval {
 
 class Solution {
     public boolean canAttendMeetings(Interval[] intervals) {
-        Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
+        Arrays.sort(intervals, (a, b) -> a.start - b.start);
         for (int i = 1; i < intervals.length; i++) {
             Interval i1 = intervals[i - 1];
             Interval i2 = intervals[i];
