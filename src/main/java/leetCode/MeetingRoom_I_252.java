@@ -5,9 +5,8 @@ package leetCode;
  */
 
 import java.util.Arrays;
-import java.util.Comparator;
 
-public class MeetingRoom252 {
+public class MeetingRoom_I_252 {
 
     public boolean canAttendMeetings(int[][] intervals) {
         //base case
