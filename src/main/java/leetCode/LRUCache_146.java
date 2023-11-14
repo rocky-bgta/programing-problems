@@ -1,5 +1,13 @@
 package leetCode;
 
+/*
+
+    https://leetcode.com/problems/lru-cache/description/
+
+    Explanation:
+    https://www.youtube.com/watch?v=NDpwj0VWz1U&t=917s
+ */
+
 import java.util.HashMap;
 import java.util.Map;
 

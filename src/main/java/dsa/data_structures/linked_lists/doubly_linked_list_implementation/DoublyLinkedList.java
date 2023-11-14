@@ -15,6 +15,9 @@ public class DoublyLinkedList {
         head = new Node(value);
         tail = head;
         length = 1;
+
+//        head.next = tail;
+//        tail.prev = head;
     }
 
     public void addToLast(int value) {
