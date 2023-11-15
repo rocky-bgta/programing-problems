@@ -1,6 +1,8 @@
 package leetCode;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /*
@@ -27,6 +29,37 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
 
         }
         return maxCount;
+    }
+
+    // sliding window method:
+    public int longestSubstring(String s){
+        Map<Character,Integer> seenChar = new HashMap<>();
+
+        int longestSubString =0;
+
+        if(s.length()<=1){
+            return s.length();
+        }
+
+        int left = 0;
+        for(int right =0; right<s.length(); right++){
+
+            // a        a       c       d       e           e               e       e
+           //  0        1       2       3       4           5               6       7
+           //                                   prevChar    currentChar
+           //                                   this prevChar already inside our hashmap
+            char currentChar = s.charAt(right);
+            Integer prevSeenCharIndex = seenChar.get(currentChar);
+            if(prevSeenCharIndex !=null && prevSeenCharIndex >= left){
+                left = prevSeenCharIndex+1;
+            }
+
+            seenChar.put(currentChar,right);// put char index in hashmap
+            longestSubString = Math.max(longestSubString, (right - left+1));
+                                    // here we add one because of 0 index base
+
+        }
+        return longestSubString;
     }
 
 }
