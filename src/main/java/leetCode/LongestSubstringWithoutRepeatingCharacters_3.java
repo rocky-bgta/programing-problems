@@ -31,6 +31,7 @@ public class LongestSubstringWithoutRepeatingCharacters_3 {
         return maxCount;
     }
 
+    // Explanation Udemy Section 6: String Question
     // sliding window method:
     public int longestSubstring(String s){
         Map<Character,Integer> seenChar = new HashMap<>();

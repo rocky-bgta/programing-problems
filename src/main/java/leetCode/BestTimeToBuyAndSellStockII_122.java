@@ -1,6 +1,6 @@
 package leetCode;
 
-//https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
 
 // https://www.youtube.com/watch?v=Q7v239y-Tik
 public class BestTimeToBuyAndSellStockII_122 {
@@ -13,15 +13,15 @@ public class BestTimeToBuyAndSellStockII_122 {
 //        Total profit is 4 + 3 = 7
 
         int [] prices = {7,1,5,3,6,4};
-        maxProfit(prices);
+        System.out.println(maxProfit(prices));
     }
 
     public static int maxProfit(int[] prices) {
         int profit = 0;
         // we start with index 1 because we consider from next day
         for(int i=1; i<prices.length; i++){
-            System.out.println("Buy Price :" + prices[i-1]);
-            System.out.println("Sell Price :" + prices[i]);
+            //System.out.println("Buy Price :" + prices[i-1]);
+            //System.out.println("Sell Price :" + prices[i]);
 
             if(prices[i]>prices[i-1]){
                 profit += prices[i] - prices[i-1];
