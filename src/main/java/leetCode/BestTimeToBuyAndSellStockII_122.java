@@ -1,8 +1,13 @@
 package leetCode;
 
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+/*
+    https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+ */
 
-// https://www.youtube.com/watch?v=Q7v239y-Tik
+/*
+    Explanation:
+    https://www.youtube.com/watch?v=M7QXuX5QMe8
+ */
 public class BestTimeToBuyAndSellStockII_122 {
 
     public static void main(String[] args) {
@@ -17,16 +22,24 @@ public class BestTimeToBuyAndSellStockII_122 {
     }
 
     public static int maxProfit(int[] prices) {
-        int profit = 0;
-        // we start with index 1 because we consider from next day
-        for(int i=1; i<prices.length; i++){
-            //System.out.println("Buy Price :" + prices[i-1]);
-            //System.out.println("Sell Price :" + prices[i]);
+        if (prices.length < 2) return 0;
 
-            if(prices[i]>prices[i-1]){
-                profit += prices[i] - prices[i-1];
+        int buyingPrice = prices[0];
+        int profit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+
+            // if the current price is less update the buy_price
+            // in real life will buy stoke less price
+            if (prices[i] < buyingPrice) {
+                buyingPrice = prices[i];
+                continue;
             }
+
+            profit += prices[i] - buyingPrice;
+            buyingPrice = prices[i];
         }
+
         return profit;
     }
 }

@@ -23,6 +23,7 @@ public class BestTimeTBuyAndSellStock_121 {
 
         for(int i=0; i<prices.length; i++){
             // if the current price is less update the buy_price
+            // in real life will buy stoke less price
             if(prices[i]<buyPrice){
                 buyPrice = prices[i];
             }else {
