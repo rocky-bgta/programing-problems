@@ -11,6 +11,8 @@ package leetCode;
 
  */
 
+//Sliding Window Algorithm
+
 public class MaximumAverageSubarrayI {
 
   double findMaxAverage(int[] nums, int k) {
@@ -26,7 +28,6 @@ public class MaximumAverageSubarrayI {
     int startIndex = 0;
     int endIndex = k;
     while (endIndex < nums.length) {
-
       sum -= nums[startIndex]; // Remove previous element
       startIndex++;
 
