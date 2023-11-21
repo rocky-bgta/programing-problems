@@ -34,11 +34,14 @@ false
 public class PermutationInString_567 {
 
     public static void main(String[] args) {
-        String s1 = "ab", s2 = "eidboaoo";
+        //String s1 = "ab", s2 = "eidboaoo";
        // String s1 = "hello", s2="ooolleoooleh";
 
 //        Input: s1 = "ab", s2 = "eidbaooo"
 //        Output: true
+
+         String s1 = "adc", s2= "dcda";
+         //Output: true
 
         System.out.println(checkInclusion(s1, s2));
     }
@@ -59,20 +62,21 @@ public class PermutationInString_567 {
         // sliding window with give length logic
         int left = 0;
         int count = 0;
+
         int windowSize = s1.length();
+        int right = windowSize-1;
 
         //s2 = "eidbaooo";
         for(int i=0; i<s2.length(); i++){
-            while(count<windowSize && left<s2.length()-1){
-                System.out.println(s2.charAt(left)+"-->");
+            while(count<=right && left<s2.length()-1){
+                System.out.println(s2.charAt(i)+"-->");
 
+                if (charFrequency.containsKey(s2.charAt(i))) {
 
-                if (charFrequency.containsKey(s2.charAt(left))) {
-
-                    if (!windowFrequency.containsKey(s2.charAt(left))) {
-                        windowFrequency.put(s2.charAt(left), 1);
+                    if (!windowFrequency.containsKey(s2.charAt(i))) {
+                        windowFrequency.put(s2.charAt(i), 1);
                     } else {
-                        windowFrequency.put(s2.charAt(left), windowFrequency.getOrDefault(s2.charAt(left),0) + 1);
+                        windowFrequency.put(s2.charAt(i), windowFrequency.getOrDefault(s2.charAt(i),0) + 1);
                     }
 
                 }

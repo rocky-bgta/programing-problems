@@ -50,6 +50,10 @@ public class SpecialStringConstruction {
                 return false;
             }
         }
+
+        // Reset the currentCount array for the next iteration
+        Arrays.fill(currentCount, 0);
+
         return true;
     }
 
