@@ -13,7 +13,7 @@ package leetCode;
 
 //Sliding Window Algorithm
 
-public class MaximumAverageSubarrayI {
+public class MaximumAverageSubarray_643 {
 
   double findMaxAverage(int[] nums, int k) {
 
