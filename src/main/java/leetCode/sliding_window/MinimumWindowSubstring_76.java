@@ -50,19 +50,21 @@ public class MinimumWindowSubstring_76 {
         int count = 0;
         int index = 0;
         boolean isBreak = false;
+        String windowString="";
         while (right < s.length()) {
 
             while (count < windowSize && index<s.length() ) {
                 char ch = s.charAt(index);
 
                 System.out.print(ch);
-
+                windowString+=ch;
+                windowString = windowString;
 //                if (temFreMap.containsKey(ch)) {
 //                    temFreMap.put(ch, freMap.get(ch) - 1);
 //                }
                 count++;
                 index++;
-                if(count==windowSize){ // after completing one window iteration check if s found
+                if(count==windowSize || index==s.length()){ // after completing one window iteration check if s found
                     count = 0;
 
                     //finalResult.add(ch);
@@ -82,6 +84,7 @@ public class MinimumWindowSubstring_76 {
                     //temFreMap.putAll(freMap); // return back initial frequency
                     //finalResult.clear();
                     System.out.print(" ");
+                    windowString="";
                 }
 
             }
