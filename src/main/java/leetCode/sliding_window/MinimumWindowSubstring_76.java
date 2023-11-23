@@ -1,9 +1,7 @@
 package leetCode.sliding_window;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -28,7 +26,11 @@ public class MinimumWindowSubstring_76 {
         if (t == null || s == null) {
             return "";
         }
-        List<Character> finalResult = new ArrayList<>();
+        // List<Character> finalResult = new ArrayList<>();
+        String result = "";
+
+        //Map<String,Integer> resultFreq = new HashMap<>();
+        Integer minWindowLength = Integer.MAX_VALUE;
 
         Map<Character, Integer> freMap = new HashMap<>();
         for (char f : t.toCharArray()) {
@@ -50,41 +52,51 @@ public class MinimumWindowSubstring_76 {
         int count = 0;
         int index = 0;
         boolean isBreak = false;
-        String windowString="";
+        String windowString = "";
         while (right < s.length()) {
 
-            while (count < windowSize && index<s.length() ) {
+            while (count < windowSize && index < s.length()) {
                 char ch = s.charAt(index);
 
                 System.out.print(ch);
-                windowString+=ch;
-                windowString = windowString;
-//                if (temFreMap.containsKey(ch)) {
-//                    temFreMap.put(ch, freMap.get(ch) - 1);
-//                }
+                windowString += ch;
+
+                if (temFreMap.containsKey(ch)) {
+                    temFreMap.put(ch, freMap.get(ch) - 1);
+                }
                 count++;
                 index++;
-                if(count==windowSize || index==s.length()){ // after completing one window iteration check if s found
+                if (count == windowSize || index == s.length()) { // after completing one window iteration check if s found
                     count = 0;
 
                     //finalResult.add(ch);
                     //finalResult.clear();
 
-//                    for(Map.Entry<Character,Integer> entry: temFreMap.entrySet()){
-//                        if(entry.getValue()!=0){
-//                            isBreak = true;
-//                            break;
-//                        }
-//                    }
+                    for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
+                        if (entry.getValue() != 0) {
+                            isBreak = true;
+                            break;
+                        } else {
+                            isBreak = false;
+                        }
+                    }
 
-//                    if(!isBreak){
-//                        return finalResult.toString();
-//                    }
+                    if (!isBreak) {
+                        //result = windowString;
+                        if (windowString.length() < minWindowLength) {
+                            minWindowLength = windowString.length();
+                            result = windowString;
+                        }
 
-                    //temFreMap.putAll(freMap); // return back initial frequency
+                    } else {
+                        isBreak = false;
+                    }
+
+
+                    temFreMap.putAll(freMap); // return back initial frequency
                     //finalResult.clear();
                     System.out.print(" ");
-                    windowString="";
+                    windowString = "";
                 }
 
             }
@@ -99,6 +111,7 @@ public class MinimumWindowSubstring_76 {
 
         }
 
-        return finalResult.toString();
+
+        return result;
     }
 }
