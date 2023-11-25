@@ -10,11 +10,13 @@ import java.util.Map;
  */
 public class MinimumWindowSubstring_76 {
     public static void main(String[] args) {
-        String s = "abc", t = "BANC";
+        String s = "abc", t = "bc";
         //String s = "BANC", t = "BANC";
+        //String s="a", t="aa";
+        //String s= "ab", t="b";
         //String s = "ADOBECODEBANC", t = "ABC";
         String result = minWindow1(s, t);
-        //System.out.println(result);
+        System.out.println(result);
     }
 
     /*
@@ -24,40 +26,112 @@ public class MinimumWindowSubstring_76 {
      */
 
     public static String minWindow1(String s, String t) {
-
-        int left=0;
-        int right=0;
+        String result = "";
+        String windowString = "";
+        boolean isBreak = false;
         int count=0;
         int windowSize=1; //
         int windowCount=0;
         int index=0;
         char ch;
 
+        if(s==null || t == null)
+            return result;
+
+        if(s.length()==1 && t.length()==1){
+            if(t.equals(s)){
+                return t;
+            }
+        }
+
+        if(s.length()==1 && t.length()==2){
+            return result;
+        }
+
+
         if(s.length()%2!=0){
             s+=" ";
         }
 
-        while (windowCount<windowSize || windowCount<s.length()-1){
-            while (count<windowSize && index<s.length()){
-                ch = s.charAt(index);
-                System.out.print(ch);
-                count++;
-                index++;
-            }
+        Integer minWindowLength = Integer.MAX_VALUE;
+        Map<Character, Integer> freMap = new HashMap<>();
 
-            if(windowSize==s.length()-1){
-                break;
-            }
-
-            count =0;
-            if(windowSize>1){
-                index--;
-            }
-            windowCount++;
-            System.out.print(" ");
+        for (char c : t.toCharArray()) {
+            freMap.put(c, freMap.getOrDefault(c, 0) + 1);
         }
 
-        return null;
+        // Creating temMap to keep original intact
+        Map<Character, Integer> temFreMap = new HashMap<>();
+        temFreMap.putAll(freMap);
+
+        for(windowSize=1; windowSize<s.length(); windowSize++ ) {
+            while (windowCount < windowSize || windowCount < s.length() - 1) {
+                while (count < windowSize && index < s.length()) {
+                    ch = s.charAt(index);
+                    //System.out.print(ch);
+                    windowString += ch;
+                    count++;
+                    index++;
+
+                    if (temFreMap.containsKey(ch)) {
+                        temFreMap.put(ch, freMap.get(ch) - 1);
+                    }
+                }
+
+
+
+                //============================================================================
+
+
+                for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
+                    if (entry.getValue() != 0) {
+                        isBreak = true;
+                        break;
+                    } else {
+                        isBreak = false;
+                    }
+                }
+
+                if (!isBreak) {
+                    //result = windowString;
+                    if (windowString.length() < minWindowLength) {
+                        minWindowLength = windowString.length();
+                        result = windowString;
+                    }
+
+                } else {
+                    isBreak = false;
+                }
+
+                temFreMap.putAll(freMap); // return back initial frequency
+                windowString = "";
+                //======================================================================
+
+
+
+
+
+
+                if (windowSize == s.length() - 1) {
+                    break;
+                }
+
+                count = 0;
+                if (windowSize > 1) {
+                    index--;
+                }
+                windowCount++;
+                //System.out.print(" ");
+            }
+
+
+
+            index = 0;
+            windowCount=0;
+            //System.out.println();
+        }
+
+        return result;
     }
 
 
