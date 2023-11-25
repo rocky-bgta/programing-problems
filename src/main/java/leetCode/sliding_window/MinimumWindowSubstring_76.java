@@ -14,8 +14,8 @@ public class MinimumWindowSubstring_76 {
         //String s = "BANC", t = "BANC";
         //String s="a", t="aa";
         // String s= "ab", t="a"; // a
-        String s = "bbaa", t = "aba"; // baa
-       // String s = "ADOBECODEBANC", t = "ABC";
+        //String s = "bbaa", t = "aba"; // baa
+        String s = "ADOBECODEBANC", t = "ABC";
         String result = minWindow2(s, t);
         System.out.println(result);
     }
@@ -28,6 +28,17 @@ public class MinimumWindowSubstring_76 {
 
     public static String minWindow2(String s, String t) {
         String result = "";
+
+        if (s == null || t == null)
+            return result;
+
+        if (s.length() == t.length()) {
+            if (t.equals(s)) {
+                return t;
+            }
+        }
+
+
         String windowString = "";
         boolean isBreak = false;
 
@@ -51,7 +62,7 @@ public class MinimumWindowSubstring_76 {
 
         while (left < s.length()) {
             index = left;
-            while (count < windowSize && index < s.length()) {
+            while (count < windowSize-1 && index < s.length()) {
                 ch = s.charAt(index);
                 windowString += ch;
                 System.out.print(ch);
