@@ -10,11 +10,56 @@ import java.util.Map;
  */
 public class MinimumWindowSubstring_76 {
     public static void main(String[] args) {
+        String s = "abc", t = "BANC";
         //String s = "BANC", t = "BANC";
-        String s = "ADOBECODEBANC", t = "ABC";
-        String result = minWindow(s, t);
-        System.out.println(result);
+        //String s = "ADOBECODEBANC", t = "ABC";
+        String result = minWindow1(s, t);
+        //System.out.println(result);
     }
+
+    /*
+        a b c
+        ab bc
+        abc
+     */
+
+    public static String minWindow1(String s, String t) {
+
+        int left=0;
+        int right=0;
+        int count=0;
+        int windowSize=1; //
+        int windowCount=0;
+        int index=0;
+        char ch;
+
+        if(s.length()%2!=0){
+            s+=" ";
+        }
+
+        while (windowCount<windowSize || windowCount<s.length()-1){
+            while (count<windowSize && index<s.length()){
+                ch = s.charAt(index);
+                System.out.print(ch);
+                count++;
+                index++;
+            }
+
+            if(windowSize==s.length()-1){
+                break;
+            }
+
+            count =0;
+            if(windowSize>1){
+                index--;
+            }
+            windowCount++;
+            System.out.print(" ");
+        }
+
+        return null;
+    }
+
 
     public static String minWindow(String s, String t) {
         //List<Character> result = new ArrayList<>();
@@ -113,5 +158,77 @@ public class MinimumWindowSubstring_76 {
 
 
         return result;
+    }
+
+    public static String minWindowSubstring(String s, String t) {
+        // Check for invalid input
+        if (s == null || t == null || s.length() == 0 || t.length() == 0) {
+            return "";
+        }
+
+        // Map to store the frequency of each character in the target string
+        Map<Character, Integer> targetFreqMap = new HashMap<>();
+        for (char c : t.toCharArray()) {
+            targetFreqMap.put(c, targetFreqMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Variables to track the number of required characters and the window boundaries
+        int requiredChars = targetFreqMap.size();
+        int left = 0, right = 0;
+        int formedChars = 0;
+
+        // Map to store the frequency of characters in the current window
+        Map<Character, Integer> windowFreqMap = new HashMap<>();
+
+        // Variables to track the minimum window substring
+        int minLength = Integer.MAX_VALUE;
+        int minLeft = 0;
+        int minRight = 0;
+
+        // Iterate through the string using the sliding window technique
+        while (right < s.length()) {
+            char currentChar = s.charAt(right);
+
+            // Update the window frequency map for the current character
+            windowFreqMap.put(currentChar, windowFreqMap.getOrDefault(currentChar, 0) + 1);
+
+            // Check if the current character satisfies the required count in the target
+            if (targetFreqMap.containsKey(currentChar) &&
+                    targetFreqMap.get(currentChar).equals(windowFreqMap.get(currentChar))) {
+                formedChars++;
+            }
+
+            // Try to minimize the window by moving the left pointer
+            while (formedChars == requiredChars && left <= right) {
+                int currentLength = right - left + 1;
+
+                // Update the minimum window substring
+                if (currentLength < minLength) {
+                    minLength = currentLength;
+                    minLeft = left;
+                    minRight = right + 1;
+                }
+
+                char leftChar = s.charAt(left);
+
+                // Update the window frequency map for the left character
+                windowFreqMap.put(leftChar, windowFreqMap.get(leftChar) - 1);
+
+                // Check if the left character contributes to the required count
+                if (targetFreqMap.containsKey(leftChar) &&
+                        targetFreqMap.get(leftChar) > windowFreqMap.get(leftChar)) {
+                    formedChars--;
+                }
+
+                // Move the left pointer to shrink the window
+                left++;
+            }
+
+            // Move the right pointer to expand the window
+            right++;
+        }
+
+        // Return the minimum window substring or an empty string if not found
+        return (minLength == Integer.MAX_VALUE) ? "" : s.substring(minLeft, minRight);
     }
 }

@@ -3,7 +3,7 @@ package leetCode;
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 // https://www.youtube.com/watch?v=E2-heUEnZKU
-public class BestTimeTBuyAndSellStock_121 {
+public class BestTimeBuyAndSellStock_121 {
 
     public static void main(String[] args) {
         int [] prices = {7,6,4,3,1}; //output = 0
