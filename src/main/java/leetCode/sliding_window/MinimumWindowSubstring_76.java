@@ -11,10 +11,11 @@ import java.util.Map;
 public class MinimumWindowSubstring_76 {
     public static void main(String[] args) {
         //String s = "abc", t = "bc";
+        //String s = "abc", t = "a";
         //String s = "BANC", t = "BANC";
         //String s="a", t="aa";
         // String s= "ab", t="a"; // a
-        //String s = "bbaa", t = "aba"; // baa
+        // String s = "bbaa", t = "aba"; // baa
         String s = "ADOBECODEBANC", t = "ABC";
         String result = minWindow2(s, t);
         System.out.println(result);
@@ -43,11 +44,12 @@ public class MinimumWindowSubstring_76 {
         boolean isBreak = false;
 
         int left=0;
-        int right = s.length();
-        int windowSize = right-left;
+        int right = 0;
+        int windowSize = right-left+1;
         int count = 0;
         char ch;
         int index;
+        int currentWindow=0;
 
         Integer minWindowLength = Integer.MAX_VALUE;
         Map<Character, Integer> freMap = new HashMap<>();
@@ -60,23 +62,50 @@ public class MinimumWindowSubstring_76 {
         Map<Character, Integer> temFreMap = new HashMap<>();
         temFreMap.putAll(freMap);
 
-        while (left < s.length()) {
-            index = left;
-            while (count < windowSize-1 && index < s.length()) {
-                ch = s.charAt(index);
-                windowString += ch;
-                System.out.print(ch);
-                count++;
-                index++;
+        while (right < s.length()) {
+            index = right;
+            while (currentWindow<=windowSize) {
+                while (count <=currentWindow && index < s.length()) {
+                    ch = s.charAt(index);
+                    windowString += ch;
+                    System.out.print(ch);
+                    count++;
+                    index++;
 
-                if (temFreMap.containsKey(ch)) {
-                    temFreMap.put(ch, temFreMap.get(ch) - 1);
+                    if (temFreMap.containsKey(ch)) {
+                        temFreMap.put(ch, temFreMap.get(ch) - 1);
+                    }
                 }
+                count=0;
+                currentWindow++;
+
+                //============================================================================
+                for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
+                    if (entry.getValue() != 0) {
+                        isBreak = true;
+                        break;
+                    } else {
+                        isBreak = false;
+                    }
+                }
+
+                if (!isBreak) {
+                    //result = windowString;
+                    if (windowString.length() < minWindowLength) {
+                        minWindowLength = windowString.length();
+                        result = windowString;
+                    }
+
+                } else {
+                    isBreak = false;
+                }
+
+                temFreMap.putAll(freMap); // return back initial frequency
+                windowString = "";
+                //======================================================================
             }
 
-
-
-            //============================================================================
+           /* //============================================================================
             for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
                 if (entry.getValue() != 0) {
                     isBreak = true;
@@ -99,10 +128,9 @@ public class MinimumWindowSubstring_76 {
 
             temFreMap.putAll(freMap); // return back initial frequency
             windowString = "";
-            //======================================================================
+            //======================================================================*/
 
-            count = 0;
-            left++;
+            right++;
             windowSize = right - left+1;
             System.out.println();
         }
