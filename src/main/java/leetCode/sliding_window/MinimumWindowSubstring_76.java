@@ -12,13 +12,15 @@ public class MinimumWindowSubstring_76 {
     public static void main(String[] args) {
         //String s = "abc", t = "bc";
         //String s = "abc", t = "a";
+        String s = "abcd", t = "b"; //b  need work for
         //String s = "BANC", t = "BANC";
         //String s="a", t="aa";
         // String s= "ab", t="a"; // a
         // String s = "bbaa", t = "aba"; // baa
-        String s = "ADOBECODEBANC", t = "ABC";
-        String result = minWindow2(s, t);
-        System.out.println(result);
+        //String s = "ADOBECODEBANC", t = "ABC";
+        printTest(s);
+       // String result = minWindow2(s, t);
+       // System.out.println(result);
     }
 
     /*
@@ -26,6 +28,45 @@ public class MinimumWindowSubstring_76 {
         ab bc
         abc
      */
+
+    // Main logic of sliding window;
+    public static String printTest(String s) {
+        int windowSize = s.length();
+        int count = 0;
+        int windowCount = 0;
+        int index = 0;
+        int currentWindowSize = 0;
+        int currentWindowSizeCount = 0;
+        int windowSizeReduce=windowSize;
+
+        while (currentWindowSizeCount < windowSize) {
+            while (windowCount < windowSizeReduce) {
+                while (count <= currentWindowSize && index<s.length()) {
+                    char ch = s.charAt(index);
+                    System.out.print(ch);
+                    index++;
+                    count++;
+                }
+                windowCount++;
+                if(currentWindowSize>0){
+                    index--;
+                }
+                count = 0;
+                System.out.print(" ");
+            }
+            System.out.println();
+            index=0;
+            windowCount=0;
+            currentWindowSize++;
+            windowSizeReduce--;
+            currentWindowSizeCount++;
+        }
+
+        return "good";
+    }
+
+
+
 
     public static String minWindow2(String s, String t) {
         String result = "";
@@ -49,7 +90,9 @@ public class MinimumWindowSubstring_76 {
         int count = 0;
         char ch;
         int index;
-        int currentWindow=0;
+        int currentWindowSize=0;
+        int windowCount = 0;
+        int windowLength = windowSize;
 
         Integer minWindowLength = Integer.MAX_VALUE;
         Map<Character, Integer> freMap = new HashMap<>();
@@ -64,8 +107,10 @@ public class MinimumWindowSubstring_76 {
 
         while (right < s.length()) {
             index = right;
-            while (currentWindow<=windowSize) {
-                while (count <=currentWindow && index < s.length()) {
+            currentWindowSize = 0;
+            while (windowCount<windowLength) {
+
+                while (count <= currentWindowSize && index < s.length()) {
                     ch = s.charAt(index);
                     windowString += ch;
                     System.out.print(ch);
@@ -75,10 +120,11 @@ public class MinimumWindowSubstring_76 {
                     if (temFreMap.containsKey(ch)) {
                         temFreMap.put(ch, temFreMap.get(ch) - 1);
                     }
-                }
-                count=0;
-                currentWindow++;
 
+                }
+                count = 0;
+                windowCount++;
+            }
                 //============================================================================
                 for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
                     if (entry.getValue() != 0) {
@@ -103,7 +149,7 @@ public class MinimumWindowSubstring_76 {
                 temFreMap.putAll(freMap); // return back initial frequency
                 windowString = "";
                 //======================================================================
-            }
+
 
            /* //============================================================================
             for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
