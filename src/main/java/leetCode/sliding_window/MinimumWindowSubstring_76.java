@@ -12,15 +12,17 @@ public class MinimumWindowSubstring_76 {
     public static void main(String[] args) {
         //String s = "abc", t = "bc";
         //String s = "abc", t = "a";
-        String s = "abcd", t = "b"; //b  need work for
+        // String s = "abcd", t = "b"; //b  need work for
         //String s = "BANC", t = "BANC";
         //String s="a", t="aa";
         // String s= "ab", t="a"; // a
-        // String s = "bbaa", t = "aba"; // baa
-        //String s = "ADOBECODEBANC", t = "ABC";
-        printTest(s);
-       // String result = minWindow2(s, t);
-       // System.out.println(result);
+        String s = "bbaa", t = "aba"; // baa
+        // String s = "ADOBECODEBANC", t = "ABC";
+        //printTest(s);
+        //dynamicSlidingWindow(s);
+        test(s);
+        // String result = minWindow2(s, t);
+        // System.out.println(result);
     }
 
     /*
@@ -28,6 +30,194 @@ public class MinimumWindowSubstring_76 {
         ab bc
         abc
      */
+
+    public static void test(String s) {
+
+
+        //init sliding window
+        //int windowSize;  // a b c
+        int index = 0;
+        int count = 0;
+        int left = 0;
+        int right = 0;
+        int rightPointer = 0;
+        int windowSize = right - left + 1;
+
+        char ch;
+
+        while (right<s.length()) {
+            while (rightPointer<s.length()){
+                while (count<windowSize) {
+                    ch = s.charAt(rightPointer);
+                    System.out.print(ch);
+                    count++;
+                    rightPointer++;
+
+                }
+                System.out.print("--");
+                count=0;
+
+            }
+            rightPointer=0;
+            right++;
+            windowSize=right - left + 1;
+            System.out.println();
+
+        }
+
+
+//        while (left <= s.length()) {
+
+//            while (rightPointer < s.length() && rightPointer<windowSize) {
+//                while (count < windowSize && rightPointer<s.length()) {
+//                    System.out.print(s.charAt(rightPointer) + " ");
+//                    count++;
+//                    rightPointer++;
+//                }
+//                count = 0;
+//
+//
+//            }
+//
+//            if(rightPointer==s.length()){
+//                right++;
+//                rightPointer =0;
+//            } else if(right==s.length()){
+//                left++;
+//                rightPointer=left;
+//            }else {
+//                rightPointer++;
+//                right++;
+//            }
+//            windowSize = right - left + 1;
+//            System.out.println();
+
+  //      }
+
+
+//        while (windowSize>=1) {
+//            while (count < windowSize && index<s.length()) {
+//                System.out.print(s.charAt(index) +" ");
+//                count++;
+//                index++;
+//            }
+//            count=0;
+//            if(index==s.length() || windowSize==1){
+//                index=0;
+//                windowSize--;
+//            }else {
+//                index--;
+//            }
+//            System.out.println();
+//        }
+
+        //move sliding window
+
+
+    }
+
+    public static void dynamicSil(String s) {
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        int windowCount = 0;
+        int window = right - left + 1;
+        int rightPointer = 0;
+        int index = 0;
+        char ch;
+        while (right < s.length()) {
+
+            while (count < window) {
+                ch = s.charAt(index);
+                System.out.print(ch);
+                count++;
+                index++;
+            }
+            count = 0;
+            System.out.print("--");
+            if (rightPointer == s.length() - 1) {
+                window++;
+            }
+
+            if (index == s.length() - 1) {
+                index = 0;
+            } else if (window > 1) {
+                index--;
+            }
+            rightPointer++;
+            if (rightPointer == s.length()) {
+                right++;
+                window = right - left + 1;
+                rightPointer = 0;
+            }
+            //System.out.println();
+
+        }
+
+    }
+
+    public static void dynamicSlidingWindow(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        int window = right - left + 1;
+        int rightPointer = right;
+        int index = 0;
+        int count = 0;
+        char ch;
+
+        while (left < s.length()) {
+            while (count < window && index < s.length()) {
+                ch = s.charAt(index);
+                System.out.print(ch);
+                index++;
+                count++;
+            }
+            count = 0;
+            System.out.print(" -- ");
+
+            if (rightPointer > 0) {
+                rightPointer--;
+                right--;
+                index = 0;
+            } else {
+                left++;
+                index = left;
+                right = s.length() - 1;
+            }
+            window = right - left + 1;
+            System.out.println();
+        }
+
+
+        //index = right;
+//            while (totalWindowCount<totalWindowLength){
+//
+//                while (currentWindowCount<currentWindowSize & index<s.length()){
+//                    ch = s.charAt(index);
+//                    System.out.print(ch);
+//                    index=index+1;
+//                    currentWindowCount++;
+//                }
+//
+//                System.out.print(" ");
+//                totalWindowCount++;
+//                currentWindowCount = 0;
+//
+//            }
+//            index=0;
+//            totalWindowCount=0;
+//            if(right!=s.length()-1) {
+//                right++;
+//                totalWindowLength = Math.abs(left-right);
+//            }else {
+//                left++;
+//                totalWindowLength = Math.abs(left-right);
+//            }
+//            currentWindowSize =right-left+1;
+//            System.out.println();
+
+    }
+
 
     // Main logic of sliding window;
     public static String printTest(String s) {
@@ -37,26 +227,26 @@ public class MinimumWindowSubstring_76 {
         int index = 0;
         int currentWindowSize = 0;
         int currentWindowSizeCount = 0;
-        int windowSizeReduce=windowSize;
+        int windowSizeReduce = windowSize;
 
         while (currentWindowSizeCount < windowSize) {
             while (windowCount < windowSizeReduce) {
-                while (count <= currentWindowSize && index<s.length()) {
+                while (count <= currentWindowSize && index < s.length()) {
                     char ch = s.charAt(index);
                     System.out.print(ch);
                     index++;
                     count++;
                 }
                 windowCount++;
-                if(currentWindowSize>0){
+                if (currentWindowSize > 0) {
                     index--;
                 }
                 count = 0;
                 System.out.print(" ");
             }
             System.out.println();
-            index=0;
-            windowCount=0;
+            index = 0;
+            windowCount = 0;
             currentWindowSize++;
             windowSizeReduce--;
             currentWindowSizeCount++;
@@ -64,8 +254,6 @@ public class MinimumWindowSubstring_76 {
 
         return "good";
     }
-
-
 
 
     public static String minWindow2(String s, String t) {
@@ -84,13 +272,13 @@ public class MinimumWindowSubstring_76 {
         String windowString = "";
         boolean isBreak = false;
 
-        int left=0;
+        int left = 0;
         int right = 0;
-        int windowSize = right-left+1;
+        int windowSize = right - left + 1;
         int count = 0;
         char ch;
         int index;
-        int currentWindowSize=0;
+        int currentWindowSize = 0;
         int windowCount = 0;
         int windowLength = windowSize;
 
@@ -108,7 +296,7 @@ public class MinimumWindowSubstring_76 {
         while (right < s.length()) {
             index = right;
             currentWindowSize = 0;
-            while (windowCount<windowLength) {
+            while (windowCount < windowLength) {
 
                 while (count <= currentWindowSize && index < s.length()) {
                     ch = s.charAt(index);
@@ -125,30 +313,30 @@ public class MinimumWindowSubstring_76 {
                 count = 0;
                 windowCount++;
             }
-                //============================================================================
-                for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
-                    if (entry.getValue() != 0) {
-                        isBreak = true;
-                        break;
-                    } else {
-                        isBreak = false;
-                    }
-                }
-
-                if (!isBreak) {
-                    //result = windowString;
-                    if (windowString.length() < minWindowLength) {
-                        minWindowLength = windowString.length();
-                        result = windowString;
-                    }
-
+            //============================================================================
+            for (Map.Entry<Character, Integer> entry : temFreMap.entrySet()) {
+                if (entry.getValue() != 0) {
+                    isBreak = true;
+                    break;
                 } else {
                     isBreak = false;
                 }
+            }
 
-                temFreMap.putAll(freMap); // return back initial frequency
-                windowString = "";
-                //======================================================================
+            if (!isBreak) {
+                //result = windowString;
+                if (windowString.length() < minWindowLength) {
+                    minWindowLength = windowString.length();
+                    result = windowString;
+                }
+
+            } else {
+                isBreak = false;
+            }
+
+            temFreMap.putAll(freMap); // return back initial frequency
+            windowString = "";
+            //======================================================================
 
 
            /* //============================================================================
@@ -177,7 +365,7 @@ public class MinimumWindowSubstring_76 {
             //======================================================================*/
 
             right++;
-            windowSize = right - left+1;
+            windowSize = right - left + 1;
             System.out.println();
         }
 
