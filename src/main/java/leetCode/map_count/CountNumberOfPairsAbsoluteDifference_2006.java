@@ -13,6 +13,10 @@ https://www.youtube.com/watch?v=geXHhqUWGw8
 
  */
 
+/**
+ * The CountNumberOfPairsAbsoluteDifference_2006 class provides methods to count the number
+ * of pairs in an array with a given absolute difference.
+ */
 public class CountNumberOfPairsAbsoluteDifference_2006 {
 
     public int countKDifferenceBrutForce(int[] nums, int k) {
