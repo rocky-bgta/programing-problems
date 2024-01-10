@@ -36,8 +36,8 @@ public class ConsecutiveCharacters_1446 {
                 int count =1;
 
                 for(int i=1; i<s.length(); i++){
-                    if(s.charAt(i)==s.charAt(i-1)){
-                        count++;
+                    if(s.charAt(i)==s.charAt(i-1)){ // e e e f
+                        count++;                    // 0 1 2 3
                     }else {
                         ans = Math.max(ans,count);
                         count=1;

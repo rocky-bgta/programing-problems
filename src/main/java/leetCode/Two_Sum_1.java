@@ -2,6 +2,7 @@ package leetCode;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Two_Sum_1 {
 //
@@ -20,7 +21,7 @@ public class Two_Sum_1 {
 
     public static int[] twoSum(int[] numbers, int target) {
 
-        HashMap<Integer,Integer> hash = new HashMap<Integer,Integer>();
+        Map<Integer,Integer> hash = new HashMap<Integer,Integer>();
         for(int i = 0; i < numbers.length; i++){
 
             Integer diff;

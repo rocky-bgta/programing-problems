@@ -34,6 +34,7 @@ public class ValidAnagram_242 {
 
         str1 = s.toCharArray();
         str2 = t.toCharArray();
+
         // Get lengths of both strings
         int n1 = str1.length;
         int n2 = str2.length;

@@ -32,7 +32,9 @@ public class TransposeMatrix_867 {
         int columns = A[0].length; // take length of current matrix column.
 
         int[][] new_matrix = new int[columns][rows];
+
         for(int row=0; row<rows; row++){
+
             for(int col=0; col<columns; col++){
                 new_matrix[col][row] = A[row][col];
             }

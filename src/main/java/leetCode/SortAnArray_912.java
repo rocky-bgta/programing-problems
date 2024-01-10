@@ -2,17 +2,19 @@ package leetCode;
 
 import java.util.HashMap;
 import java.util.Map;
+/*
+ https://leetcode.com/problems/sort-an-array/
 
-// https://leetcode.com/problems/sort-an-array/
-
-// https://www.youtube.com/watch?v=FiawvsBgYVs
-
+ Explanation:
+ https://www.youtube.com/watch?v=FiawvsBgYVs
+*/
 public class SortAnArray_912 {
 
     public int[] sortArray(int[] nums) {
 
         Map<Integer,Integer> map = new HashMap<>();
         int min=nums[0], max=nums[0];
+
         for(int i=0; i<nums.length; i++){
             if(map.containsKey(nums[i])){
                 map.put(nums[i], map.get(nums[i])+1);

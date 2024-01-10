@@ -29,14 +29,20 @@ public class RemoveDuplicates_26 {
         //int maxValue = (int) Math.pow(2, 31) - 1;
         //System.out.println("Max value: "+ maxValue);
     }
-
+/*
+    Input: nums = [1,1,2]
+    Output: 2, nums = [1,2,_]
+    Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+    It does not matter what you leave beyond the returned k (hence they are underscores).
+    Example 2:
+ */
 
     public static int removeDuplicates(int[] nums) {
 
         int i = 0;
 
         for(int j=1; j<nums.length; j++){ // if equal no need to increment i value
-            if(nums[i] != nums[j]){
+            if(nums[i] != nums[j]){ // [ 1 , 1 ]
                 nums[++i] = nums[j]; // if not then then increment value
             }
         }

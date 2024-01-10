@@ -30,7 +30,7 @@ public class Add_Binary_67 {
 
             sb.append(sum % 2); // if sum is 2 this operation result 0 and append to the  spring
             carry = sum/2; // if sum = 2 then sum/2 result 1 which is carry
-            sum = carry;
+            sum = carry;  // here we assign carry to sum because next iteration carry will be added to sum
             i--;
             j--;
         }

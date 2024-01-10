@@ -21,9 +21,9 @@ public class BestTimeBuyAndSellStock_121 {
         // at the beginning the minimum  profit is zero
         int profit = 0;
 
-        for(int i=0; i<prices.length; i++){
+        for(int i=1; i<prices.length; i++){
             // if the current price is less update the buy_price
-            // in real life will buy stoke less price
+            // in real life we will buy stoke when it's prices is less
             if(prices[i]<buyPrice){
                 buyPrice = prices[i];
             }else {

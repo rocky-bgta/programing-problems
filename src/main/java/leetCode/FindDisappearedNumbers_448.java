@@ -15,7 +15,7 @@ public class FindDisappearedNumbers_448 {
 
     public static void main(String[] args) {
         int[] inputs = {4,3,2,7,8,2,3,1};
-        List result = findDisappearedNumbers(inputs);
+        List<Integer> result = findDisappearedNumbers(inputs);
         System.out.println(result);
     }
 
@@ -24,8 +24,9 @@ public class FindDisappearedNumbers_448 {
 
         for(int i=0; i<nums.length; i++){
             int index = Math.abs(nums[i]) - 1;
+
             if(nums[index]>0){
-                nums[index] *=-1;
+                nums[index] = nums[index]* -1;
             }
         }
 

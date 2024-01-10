@@ -11,28 +11,27 @@ import java.util.Map;
 public class Roman_to_Integer_13 {
 
     public static void main(String[] args) {
-     //   romanToInt("MCMXCIV");
+        //   romanToInt("MCMXCIV");
         romanToInt("III");
     }
 
 
-
     public static int romanToInt(String s) {
-        Map<Character,Integer> mapValue = new HashMap<>();
-        mapValue.put('I',1);
-        mapValue.put('V',5);
-        mapValue.put('X',10);
-        mapValue.put('L',50);
-        mapValue.put('C',100);
-        mapValue.put('D',500);
-        mapValue.put('M',1000);
+        Map<Character, Integer> mapValue = new HashMap<>();
+        mapValue.put('I', 1);
+        mapValue.put('V', 5);
+        mapValue.put('X', 10);
+        mapValue.put('L', 50);
+        mapValue.put('C', 100);
+        mapValue.put('D', 500);
+        mapValue.put('M', 1000);
 
         int result = 0;
         int oneOperation;
         char[] chrArray = s.toCharArray();
-        for(int i = chrArray.length-1; i>= 0; i--){
+        for (int i = chrArray.length - 1; i >= 0; i--) {
             oneOperation = i;
-            if(i>0) {
+            if (i > 0) {
                 if (chrArray[i] == 'V' && chrArray[i - 1] == 'I') {
                     result += 4;
                     i--;
@@ -53,7 +52,7 @@ public class Roman_to_Integer_13 {
                     i--;
                 }
             }
-            if(oneOperation==i) {
+            if (oneOperation == i) {
                 result += mapValue.get(chrArray[i]);
             }
 

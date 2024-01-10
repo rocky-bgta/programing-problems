@@ -22,7 +22,8 @@ public class BestTimeToBuyAndSellStockII_122 {
     }
 
     public static int maxProfit(int[] prices) {
-        if (prices.length < 2) return 0;
+        if (prices.length < 2)
+            return 0;
 
         int buyingPrice = prices[0];
         int profit = 0;
@@ -30,16 +31,14 @@ public class BestTimeToBuyAndSellStockII_122 {
         for (int i = 1; i < prices.length; i++) {
 
             // if the current price is less update the buy_price
-            // in real life will buy stoke less price
-            if (prices[i] < buyingPrice) {
+            // in real life we will buy stoke when it's prices is less
+            if(prices[i] < buyingPrice) {
                 buyingPrice = prices[i];
-                continue;
+            }else {
+                profit += prices[i] - buyingPrice;
+                buyingPrice = prices[i];
             }
-
-            profit += prices[i] - buyingPrice;
-            buyingPrice = prices[i];
         }
-
         return profit;
     }
 }

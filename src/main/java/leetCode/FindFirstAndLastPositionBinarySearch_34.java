@@ -1,5 +1,10 @@
 package leetCode;
 
+/*
+    https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/
+
+ */
+
 public class FindFirstAndLastPositionBinarySearch_34 {
     public static void main(String[] args) {
         int[] array = {1, 3, 3, 5, 5, 5, 8, 9};
@@ -11,9 +16,11 @@ public class FindFirstAndLastPositionBinarySearch_34 {
 
     // Main logic to split binary search into more sub part
     public static int[] searchRange(int[] nums, int target) {
+
         if (nums.length < 1) {
             return new int[]{-1, -1};
         }
+
         int firstPos = binarySearch(nums, 0, nums.length - 1, target);
 
         if (firstPos == -1) {
