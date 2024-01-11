@@ -5,21 +5,12 @@ import java.util.*;
 
 
 public class Solution {
-    public static void process(List<?> list){
+    public static void process(List<? extends Number> list){
     //public static void process(List<Number> list) {
-//        double sum = 0;
-//        for (Number number : list)
-//            sum += number.doubleValue();
-//        System.out.println(sum);
-
         double sum = 0;
-        for (Object obj : list) {
-            if (obj instanceof Number) {
-                sum += ((Number) obj).doubleValue();
-            }
-        }
+        for (Number number : list)
+            sum += number.doubleValue();
         System.out.println(sum);
-
     }
 
     public static void main(String[] args) {
