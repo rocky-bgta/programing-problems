@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+    https://leetcode.com/problems/find-the-duplicate-number/
+
+ */
+
 public class FindTheDuplicateNumber_287 {
 
     public static void main(String[] args) {

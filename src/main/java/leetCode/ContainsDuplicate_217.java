@@ -1,7 +1,9 @@
 package leetCode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /*
 
@@ -39,6 +41,28 @@ public class ContainsDuplicate_217 {
             }
             holder.put(nums[i], nums[i]);
         }
+        return false;
+    }
+
+    public boolean containsDuplicateUsingSet(int[] nums) {
+
+        // Create a HashSet to store unique elements
+        Set<Integer> holder = new HashSet<>();
+
+        // Iterate through the array
+        /*
+            The add() method returns false if the element is already present in the set,
+            so we check if the value is already added.
+            If it's already there, the method returns true because a duplicate is found.
+         */
+        for (int num : nums) {
+            // If the number is already in the set, return true
+            if (!holder.add(num)) {
+                return true;
+            }
+        }
+
+        // If no duplicates were found, return false
         return false;
     }
 

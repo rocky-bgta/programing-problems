@@ -23,8 +23,9 @@ public class FindDisappearedNumbers_448 {
         List<Integer> result = new ArrayList<>();
 
         for(int i=0; i<nums.length; i++){
-            int index = Math.abs(nums[i]) - 1;
+            int index = Math.abs(nums[i]) - 1; // here -1 add because array index is 0 base
 
+            // now mark the value with negative
             if(nums[index]>0){
                 nums[index] = nums[index]* -1;
             }
