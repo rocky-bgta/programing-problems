@@ -10,30 +10,53 @@ package leetCode;
 public class FirstMissingPositive_41 {
 
     public static void main(String[] args) {
-        int[] input={4,3,2,5};
-        //int[] input={3,4,-1,1};
+        int[] nums1 = {1, 2, 0};
+        System.out.println(firstMissingPositive(nums1)); // Output: 3
 
-        //int[] input={7,8,9,11,12};
-        missingNumber(input);
+        int[] nums2 = {3, 4, -1, 1};
+        System.out.println(firstMissingPositive(nums2)); // Output: 2
+
+        int[] nums3 = {7, 8, 9, 11, 12};
+        System.out.println(firstMissingPositive(nums3)); // Output: 1
     }
-    public static int missingNumber(int arr[]){
-        int size = arr.length;
-        for(int i=0; i<size; i++){    //array= [1,2,3,4]
-            int currIndex = arr[i]-1; //index=  0 1 2 3  ** that is always actual array value keep at previous index
-            while ((0<=currIndex && currIndex <= size-1) && (arr[i]!=arr[currIndex])){
-                int temp = arr[i];
-                arr[i]=arr[currIndex]; /* this loop place the current index value to it's right position of array */
-                arr[currIndex] = temp;
-                currIndex = arr[i]-1; // after placing value at correct position
+
+    public static int firstMissingPositive(int[] nums) {
+        int n = nums.length;
+
+        // Step 1: Place each number at its correct index
+
+        /*
+            If a number is k, its correct position in a 0-based array is k - 1.
+            Example: In an array of size 5 ([1, 2, 3, 4, 5]),
+            the number 1 belongs at index 0, the number 2 belongs at index 1, and so on.
+
+            The number is positive (nums[i] > 0).
+            The number is within the range [1, n] (nums[i] <= n).
+            The number is not already in its correct position (nums[nums[i] - 1] != nums[i]).
+        */
+        for (int i = 0; i < n; i++) {
+            while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
+                swap(nums, i, nums[i] - 1);
             }
         }
 
-        for(int i=0; i<size; i++){ // check if missing number is discovered by adding 1 to index
-            if(arr[i]!=i+1)
-                return i+1;
+        // Step 2: Find the first index where nums[i] != i + 1
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
+            }
         }
 
-        return size+1; // if not then array length + 1  will be the missing smallest number
+        // Step 3: If all indices are correct, return n + 1
+        return n + 1;
     }
+
+    // Helper function to swap elements in the array
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
 
 }

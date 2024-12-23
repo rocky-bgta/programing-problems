@@ -33,21 +33,21 @@ public class ValidPalindrome_125 {
     }
 
    static public boolean isPalindrome(String s){
-        StringBuilder tempString = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for(char c : s.toCharArray()){
             if(Character.isDigit(c) || Character.isLetter(c)){
-                tempString.append(c);
+                stringBuilder.append(c);
             }
         }
 
-        tempString = new StringBuilder(tempString.toString().toLowerCase());
+        stringBuilder = new StringBuilder(stringBuilder.toString().toLowerCase());
         int first = 0;
-        int last = tempString.length()-1;
+        int last = stringBuilder.length()-1;
 
         while (first<=last){
-            char startingChar = tempString.charAt(first);
-            char endingChar = tempString.charAt(last);
+            char startingChar = stringBuilder.charAt(first);
+            char endingChar = stringBuilder.charAt(last);
             if(startingChar!=endingChar){
                 return false;
             }

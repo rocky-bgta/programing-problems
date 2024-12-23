@@ -19,24 +19,22 @@ public class FindDisappearedNumbers_448 {
         System.out.println(result);
     }
 
-    public static List<Integer> findDisappearedNumbers(int[] nums){
-        List<Integer> result = new ArrayList<>();
+    public static List<Integer> findDisappearedNumbers(int[] nums) {
+        // Step 1: Mark presence of numbers in the array
+        for (int i = 0; i < nums.length; i++) {
+            int index = Math.abs(nums[i]) - 1; // Map the value to an index (1-based to 0-based)
+            nums[index] = -Math.abs(nums[index]); // Mark the number at this index as negative
+        }
 
-        for(int i=0; i<nums.length; i++){
-            int index = Math.abs(nums[i]) - 1; // here -1 add because array index is 0 base
-
-            // now mark the value with negative
-            if(nums[index]>0){
-                nums[index] = nums[index]* -1;
+        // Step 2: Collect indices of positive numbers
+        List<Integer> missingNumbers = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) { // Positive numbers indicate missing values
+                missingNumbers.add(i + 1); // Convert 0-based index to 1-based
             }
         }
 
-        for(int i=0; i<nums.length; i++){
-            if(nums[i]>0){
-                result.add(i+1);
-            }
-        }
-        return result;
+        return missingNumbers;
     }
 
 }

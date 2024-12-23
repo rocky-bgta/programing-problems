@@ -45,13 +45,13 @@ public class Intersection_of_Two_Arrays_349 {
     }
 
     // https://www.youtube.com/watch?v=dP8CAXKISX0
-    public int[] intersection(int[] nums1, int[]nums2){
-        HashSet<Integer> set = new HashSet<>();
+   /* public int[] intersection(int[] nums1, int[]nums2){
+        Set<Integer> set = new HashSet<>();
         for(int i: nums1){
             set.add(i);
         }
 
-        HashSet<Integer> intersection = new HashSet<>();
+        Set<Integer> intersection = new HashSet<>();
         for(int i: nums2){
             if(set.contains(i)){
                 intersection.add(i);
@@ -62,6 +62,33 @@ public class Intersection_of_Two_Arrays_349 {
         int index=0;
         for(int i: intersection){
             result[index++]=i;
+        }
+
+        return result;
+    }*/
+
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        // Count the occurrences of each number in nums1
+        for (int num : nums1) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> intersection = new ArrayList<>();
+
+        // Check each number in nums2 against the countMap
+        for (int num : nums2) {
+            if (countMap.getOrDefault(num, 0) > 0) {
+                intersection.add(num); // Add the number to the intersection
+                countMap.put(num, countMap.get(num) - 1); // Decrease the count in the map
+            }
+        }
+
+        // Convert the list to an array
+        int[] result = new int[intersection.size()];
+        for (int i = 0; i < intersection.size(); i++) {
+            result[i] = intersection.get(i);
         }
 
         return result;

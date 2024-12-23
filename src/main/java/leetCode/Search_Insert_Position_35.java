@@ -18,23 +18,22 @@ public class Search_Insert_Position_35 {
     */
 
     public static int searchInsert(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
+        int left = 0, right = nums.length - 1;
 
-        while (low <= high) {
-
-            int mid = (high + low) / 2;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
 
             if (nums[mid] == target) {
-                return mid;             // target = 5
-            } else if (nums[mid] > target) { // 1  2  3  4  5  6  7  8  9  10
-                high = mid - 1;         // here if nums[mid] point to 7
+                return mid; // Target found at index mid
+            } else if (nums[mid] < target) {
+                left = mid + 1; // Search in the right half
             } else {
-                low = mid + 1;            //discard left side (because mid is smaller then target value)
+                right = mid - 1; // Search in the left half
             }
         }
 
-        return low;
+        // If the target is not found, left will point to the insertion index
+        return left;
     }
 
 }

@@ -38,17 +38,17 @@ public class RemoveDuplicates_26 {
  */
 
     public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) return 0; // Handle edge case: empty array
 
-        int i = 0;
+        int uniqueIndex = 0; // Pointer for the last unique element
 
-        for(int j=1; j<nums.length; j++){ // if equal no need to increment i value
-            if(nums[i] != nums[j]){ // [ 1 , 1 ]
-                nums[++i] = nums[j]; // if not then then increment value
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) { // that consecutive char are different
+                uniqueIndex++; // Move to the next position
+                nums[uniqueIndex] = nums[i]; // Update the next position with the new unique value
             }
         }
-
-        return ++i;
-
+        return uniqueIndex + 1; // Return the number of unique elements
     }
 
 }
