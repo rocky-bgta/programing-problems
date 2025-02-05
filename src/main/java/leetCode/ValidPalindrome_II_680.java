@@ -13,31 +13,34 @@ package leetCode;
 
 public class ValidPalindrome_II_680 {
     public static void main(String[] args) {
-        String string = "abca";
-        boolean isValid = validPalindrome(string);
-        System.out.println("Is valid palindrome: " + isValid);
+        ValidPalindrome_II_680 solution = new ValidPalindrome_II_680();
+        System.out.println(solution.validPalindrome("abca")); // Output: true
+        System.out.println(solution.validPalindrome("abc"));  // Output: false
     }
 
-    public static boolean validPalindrome(String s) {
-        int start = 0;
-        int end = s.length() - 1;
-        while (start < end) {
-            if (s.charAt(start) != s.charAt(end)) {
-                return validSubPalindrome(s, start + 1, end) || validSubPalindrome(s, start, end - 1);
+    public boolean validPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                // Try deleting either the left or the right character
+                return isPalindrome(s, left + 1, right) || isPalindrome(s, left, right - 1);
             }
-            start++;
-            end--;
+            left++;
+            right--;
         }
+
         return true;
     }
 
-    public static boolean validSubPalindrome(String s, int start, int end) {
-        while (start < end) {
-            if (s.charAt(start) != s.charAt(end)) {
+    private boolean isPalindrome(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
                 return false;
             }
-            start++;
-            end--;
+            left++;
+            right--;
         }
         return true;
     }

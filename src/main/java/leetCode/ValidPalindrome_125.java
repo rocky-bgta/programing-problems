@@ -28,7 +28,8 @@ public class ValidPalindrome_125 {
 
     public static void main(String[] args) {
         //String s = "A man, a plan, a canal: Panama";
-        String s = s = "race a car";
+        //String s = s = "race a car";
+        String s = s = "aba";
         System.out.println(isPalindrome(s));
     }
 
@@ -45,7 +46,7 @@ public class ValidPalindrome_125 {
         int first = 0;
         int last = stringBuilder.length()-1;
 
-        while (first<=last){
+        while (first<last){
             char startingChar = stringBuilder.charAt(first);
             char endingChar = stringBuilder.charAt(last);
             if(startingChar!=endingChar){
