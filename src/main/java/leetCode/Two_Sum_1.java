@@ -21,19 +21,26 @@ public class Two_Sum_1 {
 
     public static int[] twoSum(int[] numbers, int target) {
 
-        Map<Integer,Integer> hash = new HashMap<Integer,Integer>();
-        for(int i = 0; i < numbers.length; i++){
+        // Create a hash map to store numbers and their indices
+        Map<Integer, Integer> hash = new HashMap<Integer, Integer>();
 
-            Integer diff;
-            diff = (target - numbers[i]);
-            if(hash.containsKey(diff)){
+        // Iterate through the array
+        for (int i = 0; i < numbers.length; i++) {
+
+            // Calculate the difference between the target and the current number
+            Integer diff = (target - numbers[i]);
+
+            // Check if the difference exists in the hash map
+            if (hash.containsKey(diff)) {
+                // If it exists, return the indices of the two numbers
                 return new int[]{hash.get(diff), i};
             }
 
+            // Otherwise, add the current number and its index to the hash map
             hash.put(numbers[i], i);
-
         }
 
+        // If no pair is found, return null
         return null;
     }
 }
