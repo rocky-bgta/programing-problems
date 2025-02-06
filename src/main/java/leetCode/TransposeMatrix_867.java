@@ -29,7 +29,7 @@ public class TransposeMatrix_867 {
 
     public static int[][] transpose(int[][] A){
         int rows = A.length; //take length of current matrix row
-        int columns = A[0].length; // take length of current matrix column.
+        int columns = A[0].length; // take length of current matrix column. by taking first row and its length
 
         int[][] new_matrix = new int[columns][rows];
 
