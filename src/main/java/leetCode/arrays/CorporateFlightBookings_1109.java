@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.arrays;
 
 /*
     https://leetcode.com/problems/corporate-flight-bookings/description/

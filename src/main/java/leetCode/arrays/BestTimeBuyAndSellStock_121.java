@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.arrays;
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 

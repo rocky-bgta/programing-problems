@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.arrays;
 
 /*
     https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/

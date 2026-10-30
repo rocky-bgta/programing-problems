@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.arrays;
 
 public class Maximum_Subarray_53 {
 
