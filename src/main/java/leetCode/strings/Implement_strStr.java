@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.strings;
 
 public class Implement_strStr {
 

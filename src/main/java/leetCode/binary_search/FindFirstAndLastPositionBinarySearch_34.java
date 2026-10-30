@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.binary_search;
 
 /*
     https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/

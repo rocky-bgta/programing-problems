@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.strings;
 
 /*
     https://leetcode.com/problems/longest-common-prefix/description/
