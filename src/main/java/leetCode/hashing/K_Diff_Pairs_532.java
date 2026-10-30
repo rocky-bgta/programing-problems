@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.hashing;
 
 /*
     https://leetcode.com/problems/k-diff-pairs-in-an-array/
