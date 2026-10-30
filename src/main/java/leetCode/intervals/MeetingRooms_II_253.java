@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.intervals;
 
 /*
     Given an array of meeting time intervals intervals where

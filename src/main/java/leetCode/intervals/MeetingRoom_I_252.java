@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.intervals;
 
 /*
     https://www.youtube.com/watch?v=uOTJITjfz9g

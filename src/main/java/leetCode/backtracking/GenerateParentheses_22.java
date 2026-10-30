@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;

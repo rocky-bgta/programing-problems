@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.sorting;
 
 /*
     https://leetcode.com/problems/kth-largest-element-in-an-array/description/

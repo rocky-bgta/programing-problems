@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.bit_manipulation;
 /*
     https://leetcode.com/problems/complement-of-base-10-integer/description/
 
