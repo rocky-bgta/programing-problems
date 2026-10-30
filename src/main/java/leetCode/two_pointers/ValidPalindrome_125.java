@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.two_pointers;
 
 /*
     https://leetcode.com/problems/valid-palindrome/
